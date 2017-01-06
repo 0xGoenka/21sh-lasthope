@@ -6,14 +6,15 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/10 14:43:47 by eleclet           #+#    #+#              #
-#*   Updated: 2017/01/03 17:21:03 by eleclet          ###   ########.fr       *#
+#*   Updated: 2017/01/06 15:59:23 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME = sh
 CFLAGS = -Werror -Wall -Wextra -g
 
-SRC = main.c error.c termcaps.c get_term_size.c string_man.c\
+SRC = main.c error.c termcaps.c get_term_size.c string_man.c struct_op.c \
+      readline.c input_key.c \
 
 OBJ = $(SRC:.c=.o)
 
