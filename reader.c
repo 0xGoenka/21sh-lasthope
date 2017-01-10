@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_op.c                                        :+:      :+:    :+:   */
+/*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/10 15:11:01 by eleclet          ###   ########.fr       */
+/*   Created: 2016/04/23 13:54:36 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/09 22:23:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fcntl.h"
 #include "header.h"
-
-t_line	*struct_init(char *prompt)
+int		main()
 {
-	t_line *line;
+	int fd;
+	char *s;
+	def_term();
 
-	line = (t_line *)malloc(sizeof(t_line));
+	while (42)
+	{
+		tputs(tgetstr("cl",0), 0, outc);
+		fd = open("debug.txt", O_RDONLY);
 
-	line->str = (char *)malloc(sizeof(char) * 1);
-	line->str[0] = 0;
-	line->prompt = ft_strdup(prompt);
-	line->plen = ft_strlen(prompt);
-	line->pos = 0;
-	line->len = 0;
-
-	return (line);
+		while (get_next_line(fd, &s))
+		{
+			ft_putendl_fd(s, 2);
+		}
+		close(fd);
+		usleep(20000);
+	}
+	return (0);
 }

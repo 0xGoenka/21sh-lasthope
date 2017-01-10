@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 17:02:31 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/06 16:40:53 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/09 19:34:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*s_add(char *s, char c, int pos)
 		return (s);
 	r = (char *)malloc(sizeof(char) * len + 1);
 	r[ft_strlen(s) + 1] = 0;
-	while (i < len + 1)
+	while (i < len)
 	{
 		if (i == pos)
 		{
@@ -57,8 +57,11 @@ char	*s_del(char *s, int pos)
 	{
 		if (pos == i)
 			k = 1;
-		else
+		
+		
 			r[i] = s[i + k];
+			ft_putchar(r[i]);
+		
 		i++;
 	}
 	return (r);

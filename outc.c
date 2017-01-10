@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_op.c                                        :+:      :+:    :+:   */
+/*   outc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/10 15:11:01 by eleclet          ###   ########.fr       */
+/*   Created: 2016/04/18 20:07:03 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/08 22:10:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_line	*struct_init(char *prompt)
+int 	outc(int c)
 {
-	t_line *line;
-
-	line = (t_line *)malloc(sizeof(t_line));
-
-	line->str = (char *)malloc(sizeof(char) * 1);
-	line->str[0] = 0;
-	line->prompt = ft_strdup(prompt);
-	line->plen = ft_strlen(prompt);
-	line->pos = 0;
-	line->len = 0;
-
-	return (line);
+	write(1, &c, 1);
+	return (1);
 }
