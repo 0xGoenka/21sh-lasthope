@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 01:27:59 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/11 02:33:38 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,10 @@ void	print_end(t_line line)
 		ft_putchar(line.str[i]);
 		i++;
 	}
-	i = i - line.pos;
-	//if (i >= (line.plen + line.pos) % col())
-	//{
+	if (leny(line) - posy(line))
+	{
 		tputs(tgoto(tgetstr("UP", 0), 0, leny(line) - posy(line)), 0, outc);
-	//}
+	}
 	
 	debug(&line, posx(line), leny(line) , posy(line));
 	tputs(tgoto(tgetstr("ch", 0), 0, posx(line)), 0, outc);
@@ -78,7 +77,7 @@ int	posy(t_line line)
 
 	if ((line.pos + line.plen) % col() >= 0)
 		i++;
-	return ((line.pos + line.plen) / col());
+	return (i);
 }
 
 int	leny(t_line line)
@@ -87,7 +86,7 @@ int	leny(t_line line)
 
 	i = (line.len + line.plen) / col();
 
-	if ((line.len + line.plen) % col() >= 0)
+	if ((line.len + line.plen) % col() > 0)
 		i++;
-	return ((line.len + line.plen) / col());
+	return (i);
 }
