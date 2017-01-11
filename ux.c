@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/10 15:57:11 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/11 01:27:59 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	check_eol(t_line *line, int p)
 {
-	debug(line, (line->pos + line->plen) % col(),0,0);
 	if ((line->pos + line->plen) % col() == 0)// && line.len > col() / 2)
 	{
 		tputs(tgetstr("do", 0), 0, outc);
@@ -30,7 +29,7 @@ bool	check_eol(t_line *line, int p)
 
 bool	check_bol(t_line *line, int p)
 {
-	debug(line, (line->pos + line->plen) % col(),0,0);
+	//debug(line, (line->pos + line->plen) % col(),0,0);
 	if ((line->pos + line->plen) % col() == 0)
 	{
 		tputs(tgetstr("up", 0), 0, outc);
@@ -41,4 +40,54 @@ bool	check_bol(t_line *line, int p)
 	}
 	else
 		return (0);
+}
+
+void	print_end(t_line line)
+{
+	int i;
+
+	i = line.pos;
+	tputs(tgetstr("le",0),0, outc);
+	tputs(tgetstr("cd", 0), 0, outc);
+	while (i < line.len)
+	{
+		ft_putchar(line.str[i]);
+		i++;
+	}
+	i = i - line.pos;
+	//if (i >= (line.plen + line.pos) % col())
+	//{
+		tputs(tgoto(tgetstr("UP", 0), 0, leny(line) - posy(line)), 0, outc);
+	//}
+	
+	debug(&line, posx(line), leny(line) , posy(line));
+	tputs(tgoto(tgetstr("ch", 0), 0, posx(line)), 0, outc);
+//	tputs(tgetstr("nd", 0), 0, outc);
+}
+
+int	posx(t_line line)
+{
+	return ((line.pos + line.plen) % col());
+}
+
+int	posy(t_line line)
+{
+	int i;
+
+	i = (line.pos + line.plen) / col();
+
+	if ((line.pos + line.plen) % col() >= 0)
+		i++;
+	return ((line.pos + line.plen) / col());
+}
+
+int	leny(t_line line)
+{
+	int i;
+
+	i = (line.len + line.plen) / col();
+
+	if ((line.len + line.plen) % col() >= 0)
+		i++;
+	return ((line.len + line.plen) / col());
 }
