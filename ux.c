@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 03:08:57 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/11 16:39:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,21 @@ void	print_end(t_line line)
 	i = line.pos;
 	tputs(tgetstr("le",0),0, outc);
 	tputs(tgetstr("cd", 0), 0, outc);
+	if (line.pos == line.len)
+	{
+		line.pos++;
+		line.len++;	
+		check_bol(&line, 0);
+		tputs(tgetstr("cd",0),0,outc);
+		return ;
+	}
 	while (i < line.len)
 	{
 		ft_putchar(line.str[i]);
 		i++;
 	}
-	if (leny(line) - posy(line))
-	{
-		tputs(tgoto(tgetstr("UP", 0), 0, leny(line) - posy(line)), 0, outc);
-	}
-	
+
 	debug(&line, posx(line), leny(line) , posy(line));
-	tputs(tgoto(tgetstr("ch", 0), 0, posx(line)), 0, outc);
-//	tputs(tgetstr("nd", 0), 0, outc);
 }
 
 int	posx(t_line line)
