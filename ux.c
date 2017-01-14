@@ -44,27 +44,13 @@ bool	check_bol(t_line *line, int p)
 
 void	print_end(t_line line)
 {
-	int i;
+	char *s;
 
-	i = line.pos;
-	if (!check_bol(&line,0))
-		tputs(tgetstr("le",0),0, outc);
 	tputs(tgetstr("cd", 0), 0, outc);
-	//if (line.pos == line.len)
-	//{
-	//	line.pos++;
-	//	line.len++;	
-	//	check_bol(&line, 0);
-	//	tputs(tgetstr("cd",0),0,outc);
-	//	return ;
-	//}
-	while (i < line.len)
-	{
-		ft_putchar(line.str[i]);
-		i++;
-	}
+	s = line.str + line.pos;
+	ft_putstr(s);
 	restore_curs(line);
-	debug(&line, line.pos+line.plen, (line.len+line.plen - 1) / col() , (line.pos + line.plen - 1)/ col());
+	debug(&line, line.pos+line.plen, leny(line) , posy(line));
 }
 
 int	posx(t_line line)
@@ -76,7 +62,7 @@ int	posy(t_line line)
 {
 	int i;
 
-	i = (line.pos + line.plen - 1) / col();
+	i = (line.pos + line.plen) / col();
 
 	return (i);
 }
@@ -85,7 +71,7 @@ int	leny(t_line line)
 {
 	int i;
 
-	i = (line.len + line.plen - 1) / col();
+	i = (line.len + line.plen - 1 ) / col();
 
 	return (i);
 }

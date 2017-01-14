@@ -53,6 +53,7 @@ int		letter(t_line *line, char c);
 int		key_del(t_line *line);
 bool		key_le(t_line *line);
 bool		key_ri(t_line *line);
+bool		key_suppr(t_line *line);
 
 bool    check_eol(t_line *line, int p);
 bool    check_bol(t_line *line, int p);

@@ -15,14 +15,19 @@
 char	key_pressed(char *s, t_line *line)
 {
 	debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
+	//ft_putnbr(s[0]);
+	//ft_putnbr(s[1]);
+	//ft_putnbr(s[2]);
 	if (s[0] >= 32 && s[0] <= 126 && s[1] == 0) // it s a char
 		return (letter(line, s[0]));
 	if (s[0] == 27 && s[1] == 91 && s[2] == 68) // left
 		return (key_le(line));
 	if (s[0] == 27 && s[1] == 91 && s[2] == 67) // right
 		return (key_ri(line));
-	if (s[0] == 127 && s[1] == 0) //del
+	if (s[0] == 127 && s[1] == 0) //backspace
 	       return (key_del(line));
+	if (s[0] == 27 && s[1] == 91 && s[2] == 51) // key suppr
+		return (key_suppr(line));
 //	if (s[0] == 21 && s[1] == 91 && s[2] == 66) // down
 //		return (key_down());
 //	if (s[0] == 21 && s[1] == 91 && s[2] == 65) // up
@@ -40,10 +45,20 @@ int	letter(t_line *line, char c)
 	line->pos++;
 	ft_putchar(c);
 	check_eol(line, 0);
+	print_end(*line);
 	
 	return (0);
 }
-
+bool	key_suppr(t_line *line)
+{
+	if (line->pos == line->len)
+		return (0);
+	line->str = s_del(line->str, line->pos);
+	line->len--;
+	print_end(*line);
+	
+	return (0);	
+}
 int	key_del(t_line *line)
 {
 	if (!line->pos)
@@ -51,8 +66,10 @@ int	key_del(t_line *line)
 	line->str = s_del(line->str, (line->pos - 1));
 	line->len--;
 	line->pos--;
-	//check_bol(line,0);
+	if (!check_bol(line,0))
+		tputs(tgetstr("le", 0), 0 , outc);
 	print_end(*line);
+	
 	return (0);
 }
 
