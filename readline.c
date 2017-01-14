@@ -30,6 +30,7 @@ char	readLine(char *prompt)
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1)
 			break;
+		debug(line, (line->pos + line->plen) % col(), posy(*line), leny(*line));
 	}
 
 	return (0);//(key_pressed(buf, line));

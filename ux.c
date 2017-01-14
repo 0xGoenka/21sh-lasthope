@@ -14,7 +14,7 @@
 
 bool	check_eol(t_line *line, int p)
 {
-	if ((line->pos + line->plen) % col() == 0)// && line.len > col() / 2)
+	if ((line->pos + line->plen) % col() == 0)
 	{
 		tputs(tgetstr("do", 0), 0, outc);
 		if (p)
@@ -30,10 +30,10 @@ bool	check_eol(t_line *line, int p)
 bool	check_bol(t_line *line, int p)
 {
 	//debug(line, (line->pos + line->plen) % col(),0,0);
-	if ((line->pos + line->plen) % col() == 0)
+	if ((line->pos + line->plen) % col() == col() - 1)
 	{
 		tputs(tgetstr("up", 0), 0, outc);
-		tputs(tgoto(tgetstr("RI", 0), 0, col()), 0, outc);
+		tputs(tgoto(tgetstr("ch", 0), 0, col() -1), 0, outc);
 		if (p)
 			line->pos--;
 		return (1);
@@ -47,23 +47,24 @@ void	print_end(t_line line)
 	int i;
 
 	i = line.pos;
-	tputs(tgetstr("le",0),0, outc);
+	if (!check_bol(&line,0))
+		tputs(tgetstr("le",0),0, outc);
 	tputs(tgetstr("cd", 0), 0, outc);
-	if (line.pos == line.len)
-	{
-		line.pos++;
-		line.len++;	
-		check_bol(&line, 0);
-		tputs(tgetstr("cd",0),0,outc);
-		return ;
-	}
+	//if (line.pos == line.len)
+	//{
+	//	line.pos++;
+	//	line.len++;	
+	//	check_bol(&line, 0);
+	//	tputs(tgetstr("cd",0),0,outc);
+	//	return ;
+	//}
 	while (i < line.len)
 	{
 		ft_putchar(line.str[i]);
 		i++;
 	}
-
-	debug(&line, posx(line), leny(line) , posy(line));
+	restore_curs(line);
+	debug(&line, line.pos+line.plen, (line.len+line.plen - 1) / col() , (line.pos + line.plen - 1)/ col());
 }
 
 int	posx(t_line line)
@@ -75,10 +76,8 @@ int	posy(t_line line)
 {
 	int i;
 
-	i = (line.pos + line.plen) / col();
+	i = (line.pos + line.plen - 1) / col();
 
-	if ((line.pos + line.plen) % col() >= 0)
-		i++;
 	return (i);
 }
 
@@ -86,9 +85,7 @@ int	leny(t_line line)
 {
 	int i;
 
-	i = (line.len + line.plen) / col();
+	i = (line.len + line.plen - 1) / col();
 
-	if ((line.len + line.plen) % col() > 0)
-		i++;
 	return (i);
 }

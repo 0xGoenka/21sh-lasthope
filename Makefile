@@ -14,7 +14,7 @@ NAME = sh
 CFLAGS = -Werror -Wall -Wextra -g
 
 SRC = main.c error.c termcaps.c get_term_size.c string_man.c struct_op.c \
-      readline.c input_key.c \
+     debug.c readline.c input_key.c sys.c ux.c outc.c\
 
 OBJ = $(SRC:.c=.o)
 

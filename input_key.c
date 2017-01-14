@@ -14,6 +14,7 @@
 
 char	key_pressed(char *s, t_line *line)
 {
+	debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 	if (s[0] >= 32 && s[0] <= 126 && s[1] == 0) // it s a char
 		return (letter(line, s[0]));
 	if (s[0] == 27 && s[1] == 91 && s[2] == 68) // left
@@ -75,12 +76,11 @@ bool	key_le(t_line *line)
 {
 	if (!line->pos)
 		return (1);
-	else if (check_bol(line, 1))
-		return (1);
 	else
 	{
 		tputs(tgetstr("le", 0), 0, outc);
 		line->pos--;
+		check_bol(line, 0);
 	}
 	return (1);
 }
