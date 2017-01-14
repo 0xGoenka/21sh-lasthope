@@ -28,10 +28,12 @@ char	key_pressed(char *s, t_line *line)
 	       return (key_del(line));
 	if (s[0] == 27 && s[1] == 91 && s[2] == 51) // key suppr
 		return (key_suppr(line));
-//	if (s[0] == 21 && s[1] == 91 && s[2] == 66) // down
-//		return (key_down());
-//	if (s[0] == 21 && s[1] == 91 && s[2] == 65) // up
-//		return (key_up());
+	if (s[0] == 4)
+		exit(EXIT_SUCCESS);
+	if (s[0] == 27 && s[1] == 91 && s[2] == 66) // down
+		return (key_do(line));
+	if (s[0] == 27 && s[1] == 91 && s[2] == 65) // up
+		return (key_upp(line));
 	if (s[0] == 10 && s[1] == 0) // enter
 		return (-1);
 	return (0);	
@@ -100,4 +102,25 @@ bool	key_le(t_line *line)
 		check_bol(line, 0);
 	}
 	return (1);
+}
+
+bool	key_upp(t_line *line)
+{
+	if (posy(*line) == 0)
+		return (0);
+	if (posy(*line) == 1 && posx(*line) < line->plen )
+		return (0);
+	move_curs(line->pos - col() , *line);
+	line->pos = line->pos - col();
+	return (1);
+}
+
+bool	key_do(t_line *line)
+{
+	if (line->pos + col() > line->len)
+		return (0);
+	move_curs(line->pos + col(), *line);
+	line->pos = line->pos + col();
+	return (1);
+		
 }

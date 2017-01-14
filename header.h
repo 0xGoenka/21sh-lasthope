@@ -24,11 +24,12 @@
 
 typedef struct	s_line
 {
-	char *str;
-	char *prompt;
-	int	plen;
-	int 	pos;
-	int	len;
+	char		*str;
+	char		*prompt;
+	int		plen;
+	int 		pos;
+	int		len;
+	struct termios	term;
 }		t_line;
 
 int		col(void);
@@ -53,7 +54,9 @@ int		letter(t_line *line, char c);
 int		key_del(t_line *line);
 bool		key_le(t_line *line);
 bool		key_ri(t_line *line);
+bool		key_upp(t_line *line);
 bool		key_suppr(t_line *line);
+bool		key_do(t_line *line);
 
 bool    check_eol(t_line *line, int p);
 bool    check_bol(t_line *line, int p);
@@ -63,6 +66,7 @@ int     posy(t_line line);
 int     leny(t_line line);
 
 void    restore_curs(t_line line);
+void	move_curs(int x, t_line line);
 int	cursrow(int fd);
 int	curscol(int fd);
 int             debug(t_line *line, int a, int b, int c);
