@@ -14,8 +14,9 @@
 
 int main(void)
 {
-	if (!error())
-		return (0);
-	readLine("21sh #> ");
+	//if (!error())
+	//	return (0);
+	while (1)
+		readLine("21sh #> ");
 	return (0);
 }

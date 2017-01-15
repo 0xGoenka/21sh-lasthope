@@ -12,21 +12,48 @@
 
 #include "header.h"
 
-bool		def_term(void)
+struct termios	*def_term(void)
 {
 	char			*term_name;
 	struct termios	term;
+	struct termios	*old_term;
 
+	old_term = malloc(sizeof(struct termios));
 	if (!(term_name = getenv("TERM")))
-		return (0);
+		return (NULL);
 	if (tgetent(NULL, term_name) == ERR)
-		return (0);
+		return (NULL);
 	if (tcgetattr(0, &term) == -1)
-		return (0);
+		return (NULL);
+	tcgetattr(0, old_term);
 	term.c_lflag &= ~(ECHO | ICANON);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	if (tcsetattr(0, TCSANOW, &term) == -1)
-		return (0);
+		return (NULL);
+	return (old_term);
+}
+
+bool		restore_term(struct termios *term_restore)
+{
+	tcsetattr(0, TCSANOW, term_restore);
+	free(term_restore);
+	ft_putchar('\n');
 	return (1);
 }
+bool		clean_exit(t_line *line)
+{
+	line->pos = line->pos;
+	return (0);	
+}
+
+/*struct termios get_env(struct termios term)
+{
+	static struct termios *t = NULL;
+	if (t == NULL)
+		return (t);
+	else
+		t = term;
+	return (t);
+	
+}*/

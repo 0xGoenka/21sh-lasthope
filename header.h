@@ -35,7 +35,10 @@ typedef struct	s_line
 int		col(void);
 int		row(void);
 
-bool		def_term(void);
+struct termios	*def_term(void);
+bool		clean_exit(t_line *line);
+bool		restore_term(struct termios *term_restore);
+struct termios	get_env(struct termios term);
 bool		init_error(void);
 bool		error(void);
 
@@ -57,6 +60,10 @@ bool		key_ri(t_line *line);
 bool		key_upp(t_line *line);
 bool		key_suppr(t_line *line);
 bool		key_do(t_line *line);
+bool		key_ho(t_line *line);
+bool		key_en(t_line *line);
+bool		key_next_word(t_line *line);
+bool		key_prev_word(t_line *line);
 
 bool    check_eol(t_line *line, int p);
 bool    check_bol(t_line *line, int p);
@@ -69,7 +76,7 @@ void    restore_curs(t_line line);
 void	move_curs(int x, t_line line);
 int	cursrow(int fd);
 int	curscol(int fd);
-int             debug(t_line *line, int a, int b, int c);
+int     debug(t_line *line, int a, int b, int c);
 
 
 

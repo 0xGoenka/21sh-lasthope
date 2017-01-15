@@ -23,7 +23,7 @@ bool	init_error(void)
 	if (!def_term())
 	{
 		ft_putendl("Init Termcaps failed!");
-		return (0);
+		return (1);
 	}
 	return (1);
 }

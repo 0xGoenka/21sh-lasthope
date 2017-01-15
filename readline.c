@@ -17,19 +17,21 @@ char	readLine(char *prompt)
 {
 	char buf[7];
 	t_line *line;
+	struct termios *old_term;
 
-
+	old_term = def_term();
 	line = struct_init(prompt);
-
 	ft_putstr(line->prompt);
-	
 	while (42)
 	{
 		//debug(line, (line->pos + line->plen) % col(),0,0);
 		ft_bzero(buf, 7);
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1)
+		{
+			restore_term(old_term);
 			break;
+		}
 		debug(line, posx(*line), posy(*line), leny(*line));
 	}
 
