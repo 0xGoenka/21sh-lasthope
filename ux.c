@@ -6,11 +6,12 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 16:39:26 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/17 20:26:34 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
 
 bool	check_eol(t_line *line, int p)
 {
