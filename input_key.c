@@ -14,7 +14,7 @@
 
 char	key_pressed(char *s, t_line *line)
 {
-	//debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
+	debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 	/*ft_putnbr(s[0]);
 	ft_putnbr(s[1]);
 	ft_putnbr(s[2]);
@@ -32,7 +32,7 @@ char	key_pressed(char *s, t_line *line)
 	if (s[0] == 27 && s[1] == 91 && s[2] == 51) // key suppr
 		return (key_suppr(line));
 	if (s[0] == 4)
-		exit(EXIT_SUCCESS);
+		return (-1);
 	if (s[0] == 27 && s[1] == 91 && s[2] == 66) // down
 		return (key_do(line));
 	if (s[0] == 27 && s[1] == 91 && s[2] == 65) // up
@@ -45,6 +45,8 @@ char	key_pressed(char *s, t_line *line)
 		return (key_next_word(line));
 	if (s[2] == 49 && s[4] == 53 && s[5] == 68) // ctrl left
 		return (key_prev_word(line));
+	//if (s[0] == 27 && s[1] == 99 && s[2] == 0) // alt + c
+//		return (copy(line));
 	if (s[0] == 10 && s[1] == 0) // enter
 		return (-1);
 	return (0);	

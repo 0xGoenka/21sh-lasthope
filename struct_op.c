@@ -20,10 +20,12 @@ t_line	*struct_init(char *prompt)
 
 	line->str = (char *)malloc(sizeof(char) * 1);
 	line->str[0] = 0;
+	line->buffer_copy = NULL;
 	line->prompt = ft_strdup(prompt);
 	line->plen = ft_strlen(prompt);
 	line->pos = 0;
 	line->len = 0;
+
 
 	return (line);
 }

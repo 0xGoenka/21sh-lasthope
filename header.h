@@ -26,6 +26,7 @@ typedef struct	s_line
 {
 	char		*str;
 	char		*prompt;
+	char		*buffer_copy;
 	int		plen;
 	int 		pos;
 	int		len;
@@ -79,6 +80,7 @@ int	curscol(int fd);
 int     debug(t_line *line, int a, int b, int c);
 
 
-
+bool	copy(t_line *line);
+void	copy_read(t_line *line);
 
 # endif

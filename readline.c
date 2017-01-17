@@ -24,16 +24,15 @@ char	readLine(char *prompt)
 	ft_putstr(line->prompt);
 	while (42)
 	{
-		//debug(line, (line->pos + line->plen) % col(),0,0);
+		debug(line, (line->pos + line->plen) % col(),0,0);
 		ft_bzero(buf, 7);
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1)
-		{
-			restore_term(old_term);
 			break;
-		}
-		debug(line, posx(*line), posy(*line), leny(*line));
+		//debug(line, posx(*line), posy(*line), leny(*line));
 	}
+	move_curs(line->len, *line);
+	restore_term(old_term);
 
 	return (0);//(key_pressed(buf, line));
 
