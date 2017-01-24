@@ -14,7 +14,7 @@ bool	copy(t_line *line)
 	}
 	line->buffer_copy = (char *)malloc(sizeof(char) * line->pos - i + 1);
 	line->buffer_copy[line->pos - i] = 0;
-	ft_strncpy(line->buffer_copy, line->str + line->pos, line->pos - i);
+	ft_strncpy(line->buffer_copy, line->str + i, line->pos - i);
 	line->pos = i;
 	print_end(*line);
 	return (0);
@@ -23,10 +23,12 @@ bool	copy(t_line *line)
 void	copy_read(t_line *line)
 {
 	char s[7];
+	int start;
 
-	tputs(tgetstr("vi", 0), 0, outc);
+	start = line->pos;
 	while (42)
 	{
+		debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 		ft_bzero(s, 7);
 		read(0, s, 6);	
 		if (s[0] == 27 && s[1] == 91 && s[2] == 67 && line->len > line->pos)
@@ -36,13 +38,31 @@ void	copy_read(t_line *line)
 			tputs(tgetstr("me", 0), 0, outc);
 			line->pos++;
 		}
-		//if (s[0] == 27 && s[1] == 118 && s[2] == 0)
+		if (s[0] == 27 && s[1] == 91 && s[2] == 68 && line->pos != start)
+		{
+			move_curs(line->pos ,*line);
+			ft_putchar(line->str[line->pos]);
+			line->pos--;
+			move_curs(line->pos ,*line);
+			check_bol(line,0);
+
+		}
 		if (s[0] == 27 && s[1] == 99 && s[2] == 0)
 			break;
-	}
-	tputs(tgetstr("ve", 0), 0, outc);
-	
+	}	
 }
-//void	paste(t_line *line, int x1)
+void	paste(t_line *line)
+{
+	int i;
+
+	i = 0;
+	while (line->buffer_copy[i])
+	{
+		letter(line, line->buffer_copy[i]);
+		i++;
+	}
+	move_curs(line->pos - i, *line);
+	line->pos = line->pos - i;
+}
 
 

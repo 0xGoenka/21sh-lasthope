@@ -6,21 +6,21 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 03:08:51 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/23 21:06:32 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 
-char	readLine(char *prompt)
+char	*readLine(char *prompt, t_hist *hist)
 {
 	char buf[7];
 	t_line *line;
 	struct termios *old_term;
 
 	old_term = def_term();
-	line = struct_init(prompt);
+	line = struct_init(prompt, hist);
 	ft_putstr(line->prompt);
 	while (42)
 	{
@@ -29,12 +29,9 @@ char	readLine(char *prompt)
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1)
 			break;
-		//debug(line, posx(*line), posy(*line), leny(*line));
 	}
 	move_curs(line->len, *line);
 	restore_term(old_term);
-
-	return (0);//(key_pressed(buf, line));
-
-
+	hist_add(hist, line->str);
+	return (line->str);
 }

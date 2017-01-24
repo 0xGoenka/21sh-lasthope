@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 16:39:14 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/23 21:06:21 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,40 @@ char	key_pressed(char *s, t_line *line)
 	ft_putnbr(s[3]);
 	ft_putnbr(s[4]);
 	ft_putnbr(s[5]);*/
-	if (s[0] >= 32 && s[0] <= 126 && s[1] == 0) // it s a char
+	if (IS_CHAR) // it s a char
 		return (letter(line, s[0]));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 68) // left
+	if (KEY_LE) // left
 		return (key_le(line));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 67) // right
+	if (KEY_RI) // right
 		return (key_ri(line));
-	if (s[0] == 127 && s[1] == 0) //backspace
+	if (BACKSPACE) //backspace
 	       return (key_del(line));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 51) // key suppr
+	if (DEL) // key suppr
 		return (key_suppr(line));
-	if (s[0] == 4)
+	if (CTRL_D)
 		return (-1);
-	if (s[0] == 27 && s[1] == 91 && s[2] == 66) // down
+	if (KEY_DO) // down
 		return (key_do(line));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 65) // up
+	if (KEY_UPP) // up
 		return (key_upp(line));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 53) // home
+	if (HOME) // home
 		return (key_ho(line));
-	if (s[0] == 27 && s[1] == 91 && s[2] == 54) // end
+	if (END) // end
 		return (key_en(line));
-	if (s[2] == 49 && s[4] == 53 && s[5] == 67) // ctrl right
+	if (CTRL_RIGHT) // ctrl right
 		return (key_next_word(line));
-	if (s[2] == 49 && s[4] == 53 && s[5] == 68) // ctrl left
+	if (CTRL_LEFT) // ctrl left
 		return (key_prev_word(line));
-	//if (s[0] == 27 && s[1] == 99 && s[2] == 0) // alt + c
-//		return (copy(line));
-	if (s[0] == 10 && s[1] == 0) // enter
+	if (ALT_C) // alt + c
+		return (copy(line));
+	if (ALT_V)
+		paste(line);
+	if (ENTER) // enter
 		return (-1);
+	if (CTRL_UP)
+		hist_read_up(line);
+	if (CTRL_DO)
+		hist_read_do(line);
 	return (0);	
 }
 
