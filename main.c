@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/23 21:06:34 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 12:49:02 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
 	hist = hist_init();
 	while (1)
 	{
-		readLine("21sh #> ", hist);
+		free(readLine("21sh #> ", hist));
 		//hist_add(hist, str);
 	}
 	return (0);

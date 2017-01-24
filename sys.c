@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 14:42:24 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 16:39:21 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 12:48:38 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,18 @@ void	move_curs(int x, t_line line)
 	tputs(tgoto(tgetstr("ch", 0), 0, (x + line.plen) % col()), 0, outc);
 	if (ly - py > 0)
 		tputs(tgoto(tgetstr("DO", 0), 0, ly - py), 0, outc);
+}
+
+char	*clean_line(t_line *line)
+{
+	char *s;
+
+	s = ft_strdup(line->str);
+	ft_strdel(&line->buffer_copy);
+	ft_strdel(&line->str);
+	ft_strdel(&line->prompt);
+	free(line);
+
+	return (s);
 }
 
