@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 13:39:14 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/23 21:06:19 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 12:23:33 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		debug(t_line *line, int a, int b, int c)
 	dprintf(fd,  "%s                                         \n\n", line->str);
 	while (i < HLEN)
 	{
-		if (line->h->tab)
+		if (line->h->tab[i])
 			dprintf(fd, "tab[%d] == %s             \n", i , line->h->tab[i]);
 		i++;
 	}

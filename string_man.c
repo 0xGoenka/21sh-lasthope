@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 17:02:31 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/11 00:06:17 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 12:34:48 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*s_add(char *s, char c, int pos)
 		r[i + k] = s[i];
 		i++;
 	}
+	ft_strdel(&s);
 	return (r);
 }
 
