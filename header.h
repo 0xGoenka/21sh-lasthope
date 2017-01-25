@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 12:48:51 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 16:18:38 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ALT_C s[0] == 27 && s[1] == 99 && s[2] == 0
 # define ALT_V s[0] == 27 && s[1] == 118 && s[2] == 0
 # define ENTER s[0] == 10 && s[1] == 0
-# define HLEN 10
+# define HLEN 30
 
 typedef struct		s_hist
 {
@@ -117,4 +117,5 @@ void			hist_read_up(t_line *l);
 void			hist_read_do(t_line *l);
 
 char			*clean_line(t_line *line);
+void			s_add_s(t_line *l);
 # endif

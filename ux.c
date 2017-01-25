@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/17 20:26:34 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:36:45 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	print_end(t_line line)
 {
 	char *s;
 
-	tputs(tgetstr("cd", 0), 0, outc);
+	tputs(tgetstr("cd", NULL), 0, outc);
 	s = line.str + line.pos;
 	ft_putstr(s);
 	restore_curs(line);

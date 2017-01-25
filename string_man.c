@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 17:02:31 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 12:48:05 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 16:13:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ char	*s_add(char *s, char c, int pos)
 			r[i] = c;
 			k = 1;
 		}
-		r[i + k] = s[i];
+		if (s)
+			r[i + k] = s[i];
 		i++;
 	}
 	ft_strdel(&s);
@@ -66,4 +67,21 @@ char	*s_del(char *s, int pos)
 	}
 	ft_strdel(&s);
 	return (r);
+}
+
+void	s_add_s(t_line *l)
+{
+	char *s;
+	int bufflen;
+	
+	bufflen = ft_strlen(l->buffer_copy);
+	s = (char *)malloc(sizeof(char) * l->len + bufflen + 1);
+	s[l->len + bufflen] = 0;
+	ft_strncpy(s, l->str, l->pos);
+	ft_strncpy(s + l->pos, l->buffer_copy, bufflen);
+	ft_strncpy(s + l->pos + bufflen, l->str, l->len - l->pos);
+	ft_strdel(&l->str);
+	l->str = s;
+	l->len = l->len + bufflen;
+	print_end(*l);
 }

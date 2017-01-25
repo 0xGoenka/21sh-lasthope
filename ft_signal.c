@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 16:18:03 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/25 11:28:43 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/25 12:03:52 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int main(void)
+void 	ft_signal(void)
 {
-	//if (!error())
-	//	return (0);
-	t_hist	*hist;
-	char	*str;
+	int	sig;
 
-	hist = hist_init();
-	while (1)
+	sig = 0;
+
+	while (sig < 31)
 	{
-		str = readLine("21sh #> ", hist);
-		if (str && ft_strcmp("exit", str) == 0)
-			exit(1);
-		ft_strdel(&str);
-		//hist_add(hist, str);
+		if (i ==  SIGWINCH)
+			signal(sig, ft_sigwinch);
+		else if (i == SIGINT || i == SIGSTP)
+			signal(sig, SIG_IGN);
 	}
-	return (0);
 }

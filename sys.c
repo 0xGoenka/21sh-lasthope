@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 14:42:24 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 12:48:38 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 16:17:27 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ char	*clean_line(t_line *line)
 {
 	char *s;
 
-	s = ft_strdup(line->str);
+	s = NULL;
+	if (line->str)
+		s = ft_strdup(line->str);
 	ft_strdel(&line->buffer_copy);
 	ft_strdel(&line->str);
 	ft_strdel(&line->prompt);

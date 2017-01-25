@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 14:28:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 12:29:26 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:36:39 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_hist *hist_init(void)
 
 void	hist_add(t_hist *h, char *s)
 {
-	if (*s)
+	if (s && *s)
 	{
 		h->tab[h->index] = ft_strdup(s);
 		h->index++;
@@ -43,15 +43,15 @@ void	hist_add(t_hist *h, char *s)
 
 void	hist_read_up(t_line *l)
 {
-		if (l->h->art)
-		{
-			if (l->h->pos == 0)
-				l->h->pos = HLEN - 1;
-			else
-				l->h->pos--;
-		}
+	if (l->h->art)
+	{
+		if (l->h->pos == 0)
+			l->h->pos = HLEN - 1;
 		else
-			l->h->art = 1;
+			l->h->pos--;
+	}
+	else
+		l->h->art = 1;
 	if (l->h->pos != l->h->index && l->h->tab[l->h->pos])
 	{
 		free(l->str);
@@ -85,5 +85,13 @@ void	hist_read_do(t_line *l)
 		l->pos = ft_strlen(l->str);
 		tputs(tgetstr("cd", 0), 0, outc);
 		ft_putstr(l->str);
+	}
+	else if (l->h->art)
+	{
+		l->h->art = 0;
+		ft_strdel(&l->str);
+		move_curs(0, *l);
+		l->len = l->pos = 0;
+		tputs(tgetstr("cd", 0), 0, outc);
 	}
 }

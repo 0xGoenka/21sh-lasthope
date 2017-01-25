@@ -53,16 +53,7 @@ void	copy_read(t_line *line)
 }
 void	paste(t_line *line)
 {
-	int i;
-
-	i = 0;
-	while (line->buffer_copy[i])
-	{
-		letter(line, line->buffer_copy[i]);
-		i++;
-	}
-	move_curs(line->pos - i, *line);
-	line->pos = line->pos - i;
+	s_add_s(line);
 }
 
 
