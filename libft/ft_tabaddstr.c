@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tab_len.c                                          :+:      :+:    :+:   */
+/*   ft_tabaddstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 17:35:09 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 18:56:19 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/30 18:43:57 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/30 19:02:47 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tablen(char **t)
+char	**ft_tabaddstr(char **src, char *str)
 {
-	int i;
+	char **r;
+	int len;
 
-	i = 0;
-	if (!t)
-		return (0);
-	while (t[i])
-		i++;
-	return (i);
+	len = ft_tablen(src);
+
+	r = (char **)malloc(sizeof(char *) * (len + 2));
+	r[len + 1] = NULL;
+	r[len] = ft_strdup(str);
+	while (--len >= 0)
+		r[len] = ft_strdup(src[len]);
+
+	if (src && *src)
+		ft_tabdel(src);
+	return (r);
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_printtab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 19:36:59 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 19:10:32 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/30 18:48:38 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/30 21:04:56 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(const char *s)
+void		ft_printtab(char **t)
 {
-	ft_putstr((char *)s);
-	ft_putchar('\n');
+	if (!t || !*t)
+		return ;
+	while (*t != NULL)
+	{
+		ft_putendl(*t);
+		t++;
+	}
+	return ;
 }

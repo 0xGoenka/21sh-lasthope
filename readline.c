@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 15:36:35 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 19:16:00 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*readLine(char *prompt, t_hist *hist)
 	t_line *line;
 	struct termios *old_term;
 
+	ft_signal();
 	old_term = def_term();
 	line = struct_init(prompt, hist);
 	ft_putstr(line->prompt);

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 11:28:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 12:03:52 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 19:15:41 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@ void 	ft_signal(void)
 
 	sig = 0;
 
-	while (sig < 31)
+	while (sig < 32)
 	{
-		if (i ==  SIGWINCH)
-			signal(sig, ft_sigwinch);
-		else if (i == SIGINT || i == SIGSTP)
-			signal(sig, SIG_IGN);
+		if (sig ==  SIGWINCH)
+			signal(sig, ft_sigint);
+		else if (sig == SIGINT)
+			signal(sig, ft_sigint);
+		sig++;
 	}
+}
+
+void	ft_sigint(int i)
+{
+	exit(i);
+	return ;
 }

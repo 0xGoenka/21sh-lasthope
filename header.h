@@ -6,13 +6,14 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 16:18:38 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/30 19:00:43 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 # include "libft/libft.h"
+# include "signal.h"
 # include <stdbool.h>
 # include <termcap.h>
 # include <termios.h>
@@ -40,6 +41,13 @@
 # define ENTER s[0] == 10 && s[1] == 0
 # define HLEN 30
 
+typedef struct		s_env
+{
+	char		**env;
+	struct termios	term;
+
+}			t_env;
+
 typedef struct		s_hist
 {
 	char 		**tab;
@@ -59,6 +67,12 @@ typedef struct		s_line
 	int		len;
 	t_hist		*h;
 }			t_line;
+
+typedef struct		s_data
+{
+	t_line 		*l;
+	t_env		*e;
+}			t_data;
 
 int			col(void);
 int			row(void);
@@ -118,4 +132,9 @@ void			hist_read_do(t_line *l);
 
 char			*clean_line(t_line *line);
 void			s_add_s(t_line *l);
+
+void			ft_signal(void);
+void			ft_sigint(int i);
+t_data			*get_data(t_data *d);
+
 # endif

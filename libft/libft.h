@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2016/09/16 02:14:00 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/30 21:11:40 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@
 # include <string.h>
 # include <stdlib.h>
 # include "garbage.h"
-int					tab_len(char **t);
-int					nu_len(int n, int base);
+
+char				**ft_tabrmstr(char **t, char *s);
+void				ft_tabdel(char **t);
+void				ft_printtab(char **t);
+char				**ft_tabaddstr(char **src, char *str);
+int				ft_tablen(char **t);
+int				nu_len(int n, int base);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -84,7 +89,7 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));

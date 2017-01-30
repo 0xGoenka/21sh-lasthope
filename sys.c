@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 14:42:24 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 16:17:27 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 18:23:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,15 @@ char	*clean_line(t_line *line)
 	free(line);
 
 	return (s);
+}
+
+t_data	*get_data(t_data *d)
+{
+	static t_data *data;
+
+	if (d)
+		return (data = d);
+	else
+		return (data);
 }
 

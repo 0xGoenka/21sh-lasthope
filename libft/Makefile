@@ -6,7 +6,7 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:08:47 by eleclet           #+#    #+#              #
-#*   Updated: 2016/09/01 17:14:05 by                  ###   ########.fr       *#
+#*   Updated: 2017/01/30 21:10:58 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,11 @@ SRC =	ft_nu_len.c			\
 		ft_strupper.c		\
 		get_next_line.c 	\
 		ft_garbage.c		\
+		ft_printtab.c		\
+		ft_tabaddstr.c		\
+		ft_tabdel.c		\
+		ft_tabrmstr.c		\
+
 
 OBJECTS	= $(subst .c,.o,$(SRC))
 

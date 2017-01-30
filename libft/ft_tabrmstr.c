@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_tabrmstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 19:36:59 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 19:10:32 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/30 21:02:07 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/30 21:15:35 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(const char *s)
+char	**ft_tabrmstr(char **t, char *s)
 {
-	ft_putstr((char *)s);
-	ft_putchar('\n');
+	char **r;
+	int i;
+
+	r = NULL;
+	i = 0;
+
+	if (!t && !*t)
+		return (t);
+	while (t[i])
+	{
+		if (strcmp(s, t[i]) != 0)
+			r = ft_tabaddstr(r, t[i]);
+		i++;
+	}
+	ft_tabdel(t);
+	return (r);
+
+	
 }

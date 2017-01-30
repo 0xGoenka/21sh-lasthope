@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/23 21:06:21 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/25 17:55:15 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ char	key_pressed(char *s, t_line *line)
 		return (key_suppr(line));
 	if (CTRL_D)
 		return (-1);
-	if (KEY_DO) // down
+	if (CTRL_DO) // down
 		return (key_do(line));
-	if (KEY_UPP) // up
+		if (CTRL_UP) // up
 		return (key_upp(line));
 	if (HOME) // home
 		return (key_ho(line));
@@ -51,9 +51,9 @@ char	key_pressed(char *s, t_line *line)
 		paste(line);
 	if (ENTER) // enter
 		return (-1);
-	if (CTRL_UP)
+	if (KEY_UPP)
 		hist_read_up(line);
-	if (CTRL_DO)
+	if (KEY_DO)
 		hist_read_do(line);
 	return (0);	
 }
@@ -98,8 +98,6 @@ bool	key_ri(t_line *line)
 {
 	if (line->pos == line->len)
 		return (1);
-	//else if (check_eol(line, 1))
-	//	return (1);
 	else
 	{
 		tputs(tgetstr("nd", 0), 0, outc);
