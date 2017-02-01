@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 16:53:28 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 15:36:58 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/31 21:21:13 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,5 @@ bool		clean_exit(t_line *line)
 {
 	line->pos = line->pos;
 	return (0);	
-}
-
-/*struct termios get_env(struct termios term)
-{
-	static struct termios *t = NULL;
-	if (t == NULL)
-		return (t);
-	else
-		t = term;
-	return (t);
 	
-}*/
+}

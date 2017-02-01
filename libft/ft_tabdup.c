@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_tabcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 18:31:26 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 22:22:14 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/30 21:41:26 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/31 22:22:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+char	**ft_tabdup(char **src)
 {
-	size_t			i;
-	unsigned char	*s3;
-	unsigned char	*s4;
+	char **r;
+	int i;
 
-	s3 = (unsigned char *)s1;
-	s4 = (unsigned char *)s2;
+	if (!src)
+		return (NULL);
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s3[i] && s4[i] && s3[i] == s4[i] && i < (n - 1))
+	r = NULL;
+	r = (char **)malloc(sizeof(char *) * ft_tablen(src) + 1);
+	r[ft_tablen(src)] = 0;
+
+	while (src[i])
+	{
+		r[i] = ft_strdup(src[i]);
 		i++;
-	return (s3[i] - s4[i]);
+	}
+	return (r);
 }
+

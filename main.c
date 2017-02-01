@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 19:15:38 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/31 22:22:01 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ int main(void)
 {
 	//if (!error())
 	//	return (0);
-	t_hist	*hist;
+	t_env	*env;
 	char	*str;
 
-	hist = hist_init();
+	env = env_init();
 	while (1)
 	{
-		str = readLine("21sh #> ", hist);
-		if (str && ft_strcmp("exit", str) == 0)
-			exit(1);
+		str = readLine("21sh #> ", env->hist);
+		//if (str && ft_strcmp("exit", str) == 0)
+		//	exit(1);
+		//if (str && ft_strcmp("env", str) == 0)
+		//	display_env(env);
+		parser(str, env);
 		ft_strdel(&str);
 		//hist_add(hist, str);
 	}

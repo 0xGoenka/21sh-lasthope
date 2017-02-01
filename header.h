@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 19:00:43 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/01/31 22:22:05 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@
 # define ENTER s[0] == 10 && s[1] == 0
 # define HLEN 30
 
-typedef struct		s_env
-{
-	char		**env;
-	struct termios	term;
-
-}			t_env;
 
 typedef struct		s_hist
 {
@@ -56,6 +50,14 @@ typedef struct		s_hist
 	int		pos;
 	bool		art;
 }			t_hist;
+
+typedef struct		s_env
+{
+	char		**t;
+	struct termios	term;
+	t_hist		*hist;
+
+}			t_env;
 
 typedef struct		s_line
 {
@@ -136,5 +138,12 @@ void			s_add_s(t_line *l);
 void			ft_signal(void);
 void			ft_sigint(int i);
 t_data			*get_data(t_data *d);
+
+t_env			*env_init(void);
+bool			display_env(char **line, t_env *env);
+bool			set_env(char **line, t_env *env);
+bool			buildin(char **line, t_env *env);
+char			**parser(char *str, t_env *env);
+bool			unset_env(char **line, t_env *env);
 
 # endif

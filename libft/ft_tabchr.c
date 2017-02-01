@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdel.c                                        :+:      :+:    :+:   */
+/*   ft_chrtab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/30 18:56:29 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 21:41:19 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/31 21:56:23 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/31 22:22:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabdel(char **t)
+int	ft_tabchr(char **tab, char *s)
 {
-	int i;
+	int r;
 
-	i = 0;
-
-	if (t && *t)
+	r = 0;
+	if (!tab)
+		return (-1);
+	while (tab[r])
 	{
-		while (t[i])
-		{
-			free(t[i]);
-			i++;
-		}
-		free(t);
+		if (ft_strncmp(tab[r], s, ft_strlen(s)) == 0)
+			return (r);
+		r++;
 	}
+	return (-1);
 }

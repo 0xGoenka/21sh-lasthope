@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdel.c                                        :+:      :+:    :+:   */
+/*   ft_strcnt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/30 18:56:29 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 21:41:19 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/31 21:51:03 by eleclet           #+#    #+#             */
+/*   Updated: 2017/01/31 21:58:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabdel(char **t)
+int	ft_strcnt(char *s, char c)
 {
-	int i;
+	int r;
 
-	i = 0;
-
-	if (t && *t)
+	r = 0;
+	while (*s)
 	{
-		while (t[i])
-		{
-			free(t[i]);
-			i++;
-		}
-		free(t);
+		if (*s == c)
+			r++;
+		s++;
 	}
+	return (r);
 }
