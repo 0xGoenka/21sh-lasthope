@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 22:22:05 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/02 15:27:24 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/ioctl.h>
 # include <curses.h>
 # include <stdio.h>
+# include <sys/wait.h>
+# include <dirent.h>
 
 # define IS_CHAR s[0] >= 32 && s[0] <= 126 && s[1] == 0
 # define KEY_LE s[0] == 27 && s[1] == 91 && s[2] == 68
@@ -145,5 +147,14 @@ bool			set_env(char **line, t_env *env);
 bool			buildin(char **line, t_env *env);
 char			**parser(char *str, t_env *env);
 bool			unset_env(char **line, t_env *env);
+
+int			disp_err(int code);
+
+char			**split_path(char **env);
+int			is_exec(char **param);
+char			*get_home_dir(char **env);
+int			basic_exec(char **param, char **env);
+int			exec_bin(char **env, char **param, char **path);
+
 
 # endif

@@ -6,16 +6,33 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/10 14:43:47 by eleclet           #+#    #+#              #
-#*   Updated: 2017/01/31 21:53:42 by eleclet          ###   ########.fr       *#
+#*   Updated: 2017/02/02 14:55:11 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 NAME = sh
 CFLAGS = -Werror -Wall -Wextra -g
 
-SRC = main.c error.c termcaps.c get_term_size.c string_man.c struct_op.c \
-      copyandpast.c historic.c debug.c readline.c input_key.c sys.c ux.c outc.c\
-      ft_signal.c env.c parser.c\
+SRC =	main.c		\
+	error.c		\
+	termcaps.c	\
+	get_term_size.c	\
+	string_man.c	\
+	struct_op.c	\
+	copyandpast.c	\
+	historic.c 	\
+	debug.c		\
+	readline.c	\
+	input_key.c	\
+	sys.c 		\
+	ux.c 		\
+	outc.c		\
+	ft_signal.c	\
+	env.c		\
+	parser.c	\
+	disp_err.c	\
+	exec.c		\
+	sys_utils.c	\
 
 OBJ = $(SRC:.c=.o)
 

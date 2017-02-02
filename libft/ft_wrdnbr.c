@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chrtab.c                                        :+:      :+:    :+:   */
+/*   strsplit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 21:56:23 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/01 20:30:42 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/01 10:15:13 by eleclet           #+#    #+#             */
+/*   Updated: 2017/02/01 10:27:40 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tabchr(char **tab, char *s, char split)
+int	ft_wrdnbr(char *s, char c)
 {
-	int r;
-	char **arg;
-	char **arg1;
+	int i;
+	int j;
 
-	arg = ft_strsplit(s, split);
-
-	r = 0;
-	if (!tab)
-		return (-1);
-	while (tab[r])
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		arg1 = ft_strsplit(tab[r], split);
-		if (ft_strcmp(arg[0], arg1[0]) == 0)
-			return (r);
-		r++;
-		ft_tabdel(arg1);
+		while (s[i] && s[i] == c)
+			i++;
+		while (s[i] && s[i] != c)
+			i++;
+		j++;
 	}
-	ft_tabdel(arg);
-	return (-1);
+	if (s[i -1] == c)
+		j--;
+	return (j);
 }

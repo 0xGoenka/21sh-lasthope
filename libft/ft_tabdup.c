@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 21:41:26 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 22:22:03 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/01 10:12:13 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_tabdup(char **src)
 		return (NULL);
 	i = 0;
 	r = NULL;
-	r = (char **)malloc(sizeof(char *) * ft_tablen(src) + 1);
+	r = (char **)malloc(sizeof(char *) * (ft_tablen(src) + 1));
 	r[ft_tablen(src)] = 0;
 
 	while (src[i])

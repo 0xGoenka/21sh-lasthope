@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/01 09:58:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/01 20:25:37 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <stdlib.h>
 # include "garbage.h"
 
+
+char				*ft_strndup(char *s, int len);
+int				ft_wrdnbr(char *s, char c);
 int				ft_strfnd(char *s, char c);
-int				ft_tabchr(char **tab, char *s);
+int				ft_tabchr(char **tab, char *s, char split);
 int				ft_strcnt(char *s, char c);
 char				**ft_tabdup(char **src);
 char				**ft_tabrmstr(char **t, char *s);
@@ -71,7 +74,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
-char				**ft_strsplit(char const *s, char c);
+char				**ft_strsplit(char *s, char c);
 char				*ft_itoa(long long int n);
 void				ft_putchar(int c);
 void				ft_putstr(char *s);

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 21:02:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 22:22:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/01 20:36:14 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ char	**ft_tabrmstr(char **t, char *s)
 		i++;
 	}
 	ft_tabdel(t);
-	return (r);
-
-	
+	return (r);	
 }

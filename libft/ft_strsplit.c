@@ -1,75 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   strsplit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 18:58:18 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 22:22:10 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/01 10:28:07 by eleclet           #+#    #+#             */
+/*   Updated: 2017/02/01 15:46:04 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strhelp(char const *s, unsigned int start, size_t len)
+char	**ft_strsplit(char *s, char c)
 {
-	char	*str;
+	char **r;
+	char *ptr;
+	int i;
+	int wrd;
 
-	str = (char *)malloc(sizeof(*str) * len + 1);
-	while (start < len)
-	{
-		*str = s[start];
-		start++;
-		str = str + 1;
-	}
-	*str = '\0';
-	return (str - len);
-}
-
-static int	ft_nb_mots(char const *s, char c)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-			i++;
-		if (s[i] != '\0' || s[i - 1] != c)
-			j++;
-	}
-	return (j);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**str;
-	int		i;
-	int		j;
-	int		l;
-
-	i = 0;
-	j = 0;
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	l = ft_nb_mots(s, c);
-	str = (char **)malloc(sizeof(char *) * l + 1);
-	while (i < l)
+	wrd = ft_wrdnbr(s, c);
+	i = 0;
+	r = (char **)malloc(sizeof(char *) * (wrd + 1));
+	r[wrd] = NULL;
+	while (i < wrd)
 	{
-		j = 0;
 		while (*s && *s == c)
-			s = s + 1;
-		while (*(s + j) && *(s + j) != c)
-			j++;
-		*(str++) = ft_strhelp(s, 0, j);
-		s = s + j;
+			s++;
+		ptr = s;
+		while (*ptr && *ptr != c)
+			ptr++;
+		r[i] = ft_strndup(s, ptr - s);
+		s = ptr;
 		i++;
 	}
-	*str = NULL;
-	return (str - l);
+	return (r);
 }
