@@ -6,7 +6,7 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:08:47 by eleclet           #+#    #+#              #
-#*   Updated: 2017/02/01 15:52:20 by eleclet          ###   ########.fr       *#
+#*   Updated: 2017/02/07 18:39:43 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,9 @@ SRC =	ft_nu_len.c			\
 		ft_strfnd.c		\
 		ft_wrdnbr.c		\
 		ft_strndup.c		\
+		ft_getopt.c		\
+		ft_saddc.c		\
+		ft_sdelc.c		\
 
 
 OBJECTS	= $(subst .c,.o,$(SRC))

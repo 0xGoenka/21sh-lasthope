@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 15:50:21 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/01 20:38:34 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/07 21:08:04 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@ int	disp_err(int code)
 {
 	if (code == 0)
 	{
-		ft_putendl("an error occured : usage setenv something=something");
+		ft_putendl("an error occured : usage setenv key=value");
 		return (1);
 	}
 	else if (code == 1)
-		ft_putendl("Entry not found");
+	{
+		ft_putendl("Usage : 'unsetenv key'");
+		return (1);
+	}
+	else if (code == 2)
+	{
+		ft_putendl("Empty env, program will exit now.");
+		exit (-1);
+	}
 	else
 	{
 		printf("%d\n", code);

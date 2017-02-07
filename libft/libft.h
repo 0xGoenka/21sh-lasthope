@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/01 20:25:37 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/07 18:39:25 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@
 # include <stdlib.h>
 # include "garbage.h"
 
-
+typedef				struct s_opt
+{
+	int status;
+	char *opt;
+	char **arg;
+}				t_opt;
+char				*ft_sdelc(char *s, int pos);
+char				*ft_saddc(char *s, char c, int pos);
+t_opt				ft_getopt(char **line, char *allowed);
 char				*ft_strndup(char *s, int len);
 int				ft_wrdnbr(char *s, char c);
 int				ft_strfnd(char *s, char c);

@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabrmstr.c                                      :+:      :+:    :+:   */
+/*   ft_straddchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/30 21:02:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/07 21:15:30 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/07 18:32:36 by eleclet           #+#    #+#             */
+/*   Updated: 2017/02/07 18:34:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_tabrmstr(char **t, char *s)
+char	*ft_saddc(char *s, char c, int pos)
 {
-	char **r;
+	char *r;
 	int i;
-
-	r = NULL;
+	int k;
+	int len;
+	
+	k = 0;
 	i = 0;
-
-	if (!t || !*t || !s || !*s)
-		return (t);
-	while (t[i])
+	len = ft_strlen(s) + 1;
+	if (pos > ((int)ft_strlen(s) + 1) || pos < 0)
+		return (s);
+	r = (char *)malloc(sizeof(char) * len + 1);
+	r[ft_strlen(s) + 1] = 0;
+	while (i < len)
 	{
-		if (strcmp(s, t[i]) != 0)
-			r = ft_tabaddstr(r, t[i]);
+		if (i == pos)
+		{
+			r[i] = c;
+			k = 1;
+		}
+		if (s)
+			r[i + k] = s[i];
 		i++;
 	}
-	ft_tabdel(t);
-	return (r);	
+	ft_strdel(&s);
+	return (r);
 }
+

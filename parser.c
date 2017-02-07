@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/02 23:21:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/07 21:06:51 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,13 @@ char		**parser(char *str, t_env *env)
 
 	if (!(param = ft_strsplit(str,' ')))
 		return (NULL);
-	buildin(param, env);
-	basic_exec(param, env->t);
-	exec_bin(env->t, param, split_path(env->t));
+	if (!buildin(param, env))
+		if (!basic_exec(param, env->t))
+			exec_bin(env->t, param, split_path(env->t));
 	ft_tabdel(param);
 	return (NULL);
 }
 
-/*char	*ft_getopt(char **line, char *allowed) // alowed est un liste des option existente;
-{
-	int i;
-
-	i = 1;
-	while (line[1])
-	{
-		
-	}
-}*/
 
 bool		buildin(char **line, t_env *env)
 {
