@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/07 19:03:27 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 15:21:57 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ int			is_exec(char **param);
 char			*get_home_dir(char **env);
 int			basic_exec(char **param, char **env);
 int			exec_bin(char **env, char **param, char **path);
-
-
+bool			env_alone(char **env, t_opt opt);
+bool			env_i(t_opt opt);
+bool			env_u(char **env, t_opt opt);
 # endif

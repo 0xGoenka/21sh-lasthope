@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 15:31:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/07 21:28:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 16:05:13 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	print_err(char *s, char c)
 {
 	ft_putstr(s);
-	ft_putstr(" : invalide option -- '");
+	ft_putstr(" : invalid option -- '");
 	ft_putchar(c);
 	ft_putendl("'");
 }
@@ -33,7 +33,7 @@ static char	*ret_opt(char **line, char *allowed, int *status)
 	{
 		if (line[i][0] != '-' || ft_strcmp(line[i], "--") == 0)
 			break;
-		while (line[i][++j])
+		while (line[i][0] && line[i][++j])
 		{
 			if (!ft_strchr(allowed, line[i][j]))
 			{
@@ -44,6 +44,7 @@ static char	*ret_opt(char **line, char *allowed, int *status)
 			else
 				r = ft_saddc(r, line[i][j], 0);
 		}
+		j = 0;
 	}
 	return (r);
 }
