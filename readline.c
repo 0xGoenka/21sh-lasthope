@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/07 12:50:48 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 21:12:55 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*readLine(char *prompt, t_hist *hist)
 	ft_putstr(line->prompt);
 	while (42)
 	{
-		debug(line, (line->pos + line->plen) % col(),0,0);
+		//debug(line, (line->pos + line->plen) % col(),0,0);
 		ft_bzero(buf, 7);
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1)

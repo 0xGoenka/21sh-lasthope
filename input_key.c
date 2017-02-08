@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 17:55:15 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 21:13:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	key_pressed(char *s, t_line *line)
 {
-	debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
+	//debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 	/*ft_putnbr(s[0]);
 	ft_putnbr(s[1]);
 	ft_putnbr(s[2]);

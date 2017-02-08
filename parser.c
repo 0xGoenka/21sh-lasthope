@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 14:02:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 22:53:46 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ bool		buildin(char **line, t_env *env)
 		return (display_env(line, env));
 	if (ft_strcmp(line[0], "unsetenv") == 0)
 		return (unset_env(line, env));
+	if (ft_strcmp(line[0], "cd") == 0)
+		return (cd(env->t, line));
 	return (0);
 }

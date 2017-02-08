@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/24 15:36:45 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 21:13:49 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_end(t_line line)
 	s = line.str + line.pos;
 	ft_putstr(s);
 	restore_curs(line);
-	debug(&line, line.pos+line.plen, leny(line) , posy(line));
+	//debug(&line, line.pos+line.plen, leny(line) , posy(line));
 }
 
 int	posx(t_line line)

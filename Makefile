@@ -6,7 +6,7 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/10 14:43:47 by eleclet           #+#    #+#              #
-#*   Updated: 2017/02/02 14:55:11 by eleclet          ###   ########.fr       *#
+#*   Updated: 2017/02/08 21:04:17 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC =	main.c		\
 	disp_err.c	\
 	exec.c		\
 	sys_utils.c	\
+	cd.c		\
 
 OBJ = $(SRC:.c=.o)
 

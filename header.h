@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 15:21:57 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 22:53:45 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,9 @@ int			exec_bin(char **env, char **param, char **path);
 bool			env_alone(char **env, t_opt opt);
 bool			env_i(t_opt opt);
 bool			env_u(char **env, t_opt opt);
+
+void			change_env_val(char **env, char *key, char *newval);
+char			*get_env_val(char **env, char *key);
+
+bool			cd(char **env, char **line);
 # endif

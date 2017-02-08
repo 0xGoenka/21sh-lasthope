@@ -28,7 +28,7 @@ void	copy_read(t_line *line)
 	start = line->pos;
 	while (42)
 	{
-		debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
+//debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 		ft_bzero(s, 7);
 		read(0, s, 6);	
 		if (s[0] == 27 && s[1] == 91 && s[2] == 67 && line->len > line->pos)

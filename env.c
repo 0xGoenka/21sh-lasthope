@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:40:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 15:26:31 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/08 17:25:10 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@ t_env		*env_init(void)
 {
 	extern char **environ;
 	t_env *env;
+	char *s;
+	int shlvl;
 
 	env = (t_env *)malloc(sizeof(t_env));
 	env->hist = hist_init();
 	env->t = ft_tabdup(environ);
+	if ((s = get_env_val(env->t, "SHLVL")))
+	{
+		shlvl = ft_atoi(s);
+		++shlvl;
+		change_env_val(env->t, ft_strdup("SHLVL"), ft_itoa(shlvl));
+	}
 	return (env);
 }
 
@@ -27,11 +35,7 @@ bool		display_env(char **line, t_env *env)
 {
 	t_opt opt;
 	char	**tmpenv;
-	//int i;
-	//char	**param;
 
-	//param = NULL;
-	//i = 0;
 	tmpenv = ft_tabdup(env->t);
 	opt = ft_getopt(line, "ui");
 	if (opt.status == 1)
@@ -42,26 +46,6 @@ bool		display_env(char **line, t_env *env)
 		return (1);
 	if (env_u(tmpenv, opt))
 		return (1);
-	/*if (!opt.opt && !opt.status)
-		ft_printtab(env->t);
-	if (ft_tablen(env->t) == 0)
-		ft_putendl("Env: is empty.");
-
-	if (!opt.arg && ft_strchr(opt.opt, 'u'))
-		ft_putendl("env : option require an argument -- 'u'");
-	if (ft_strchr(opt.opt, 'u') && opt.arg)
-		tmpenv = ft_tabrmstr(tmpenv, tmpenv[ft_tabchr(tmpenv,
-					opt.arg[0], '=')]);
-	if (ft_strchr(opt.opt, 'i'))
-		ft_tabdel(tmpenv);
-	if (ft_tablen(opt.arg) == 1)
-		ft_printtab(tmpenv);
-	while (opt.arg && opt.arg[++i])
-		param = ft_tabaddstr(param, opt.arg[i]);
-	if (param && !basic_exec(param, tmpenv))
-		exec_bin(param, tmpenv, split_path(tmpenv));
-
-*/
 	return (1);
 }
 bool		env_alone(char **env, t_opt opt)
