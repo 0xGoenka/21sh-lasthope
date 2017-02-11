@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 23:45:59 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/10 22:49:02 by eleclet           #+#    #+#             */
+/*   Updated: 2017/02/11 00:29:49 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int main(void)
+void	super_exit(t_env *env)
 {
-	//if (!error())
-	//	return (0);
-	t_env	*env;
-	char	*str;
-
-	env = env_init();
-	while (1)
-	{
-		str = readLine("21sh #> ", env->hist);
-		parser(str, env);
-		ft_strdel(&str);
-	}
-	return (0);
+	ft_tabdel(env->t);
+	ft_tabdel(env->hist->tab);
+	free(env->hist);
+	free(env);
+	exit(EXIT_SUCCESS);
 }
+
+bool	b_echo(char **line)
+{
+	if (ft_tablen(line) == 1)
+		return (ft_err("echo : error no arg.", 1));
+	while (line && *line)
+	{
+		line++;
+		ft_putstr(*line);
+		ft_putchar(' ');
+	}
+	ft_putchar('\n');
+	return (1);
+}
+

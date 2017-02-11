@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 22:53:45 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/10 23:50:43 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 typedef struct		s_hist
 {
 	char 		**tab;
-	char		*current;
 	int	 	index;
 	int		pos;
 	bool		art;
@@ -163,4 +162,6 @@ void			change_env_val(char **env, char *key, char *newval);
 char			*get_env_val(char **env, char *key);
 
 bool			cd(char **env, char **line);
+void			super_exit(t_env *env);
+bool			b_echo(char **line);
 # endif

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:40:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 17:25:10 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/10 13:43:22 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ t_env		*env_init(void)
 	if ((s = get_env_val(env->t, "SHLVL")))
 	{
 		shlvl = ft_atoi(s);
+		ft_strdel(&s);
 		++shlvl;
-		change_env_val(env->t, ft_strdup("SHLVL"), ft_itoa(shlvl));
+		change_env_val(env->t, ft_strdup("SHLVL"), (s = ft_itoa(shlvl)));
+		ft_strdel(&s);
 	}
 	return (env);
 }
@@ -36,16 +38,16 @@ bool		display_env(char **line, t_env *env)
 	t_opt opt;
 	char	**tmpenv;
 
+	tmpenv = NULL;
 	tmpenv = ft_tabdup(env->t);
 	opt = ft_getopt(line, "ui");
-	if (opt.status == 1)
-		return (1);
-	if (env_alone(tmpenv, opt))
-		return (1);
-	if (env_i(opt))
-		return (1);
-	if (env_u(tmpenv, opt))
-		return (1);
+	if (opt.status != 1)
+		if (!env_alone(tmpenv, opt))
+			if (!env_i(opt))
+				env_u(tmpenv, opt);
+	ft_tabdel(tmpenv);
+	ft_tabdel(opt.arg);
+	ft_strdel(&opt.opt);
 	return (1);
 }
 bool		env_alone(char **env, t_opt opt)
@@ -56,7 +58,7 @@ bool		env_alone(char **env, t_opt opt)
 		ft_putendl("Env is empty.");
 	else if (!opt.opt && opt.arg)
 	{
-		if (!basic_exec(opt.arg, env))
+		if (basic_exec(opt.arg, env))
 			exec_bin(opt.arg, env, split_path(env));
 	}
 	else 
@@ -71,7 +73,7 @@ bool		env_i(t_opt opt)
 	if (!ft_strchr(opt.opt, 'u'))
 	{
 		if (opt.arg)
-			if (!basic_exec(opt.arg, NULL))
+			if (basic_exec(opt.arg, NULL))
 				exec_bin(opt.arg, NULL, NULL);
 		return (1);
 	}
@@ -81,8 +83,8 @@ bool		env_i(t_opt opt)
 			ft_putendl("missing arg for -u");
 		if (ft_tablen(opt.arg) > 1)
 		{
-			if (!basic_exec(opt.arg + 1, NULL))
-				exec_bin(opt.arg + 1, NULL, NULL);
+			if (basic_exec(opt.arg, NULL))
+				exec_bin(opt.arg, NULL, NULL);
 		}
 		return (1);	
 	}
@@ -93,31 +95,31 @@ bool		env_i(t_opt opt)
 bool		env_u(char **env, t_opt opt)
 {
 	int i;
+	char **tmp;
 
+	tmp = ft_tabdup(env);
 	if (!opt.arg)
-	{
-		ft_putendl("missing arg for -u");
-		return (0);
-	}
+		return (ft_err("missing arg for -u", 0));
 	i = ft_tabchr(env, opt.arg[0], '=');
 	if (i != -1)
-		env = ft_tabrmstr(env, env[i]);
+		env = ft_tabrmstr(tmp, env[i]);
 	if (ft_tablen(opt.arg) == 1)
 		ft_printtab(env);
 	else
 	{
-		if (!basic_exec(opt.arg + 1, env))
-			exec_bin(opt.arg + 1, env, split_path(env));
+		if (basic_exec(opt.arg + 1, env))
+			exec_bin(env, opt.arg + 1, split_path(env));
 	}
+	ft_tabdel(tmp);
 	return (1);
-
-
 }
 
 bool		set_env(char **line, t_env *env)
 {
 	int i;
 	char **arg;
+	char *ptr;
+	char *ptr2;
 
 	arg = ft_strsplit(line[1], '=');
 	if (ft_tablen(line) != 2 || ft_strcnt(line[1], '=') != 1 || 
@@ -126,13 +128,16 @@ bool		set_env(char **line, t_env *env)
 		ft_tabdel(arg);
 		return (disp_err(0));
 	}
-	if ((i = ft_tabchr(env->t, ft_strjoin(arg[0], "="), '=')) >= 0)
+	if ((i = ft_tabchr(env->t, ptr = ft_strjoin(arg[0], "="), '=')) >= 0)
 	{
 		free(env->t[i]);
-		env->t[i] = ft_strjoin(arg[0], ft_strjoin("=", arg[1]));	
+		env->t[i] = ft_strjoin(arg[0], ptr2 = ft_strjoin("=", arg[1]));	
+		ft_strdel(&ptr2);
 	}
 	else
 		env->t = ft_tabaddstr(env->t, line[1]);
+	ft_strdel(&ptr);
+	ft_tabdel(arg);
 	return (1);	
 }
 

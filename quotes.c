@@ -1,30 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 23:45:59 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
+/*   Updated: 2017/02/11 00:31:07 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int main(void)
-{
-	//if (!error())
-	//	return (0);
-	t_env	*env;
-	char	*str;
 
-	env = env_init();
-	while (1)
-	{
-		str = readLine("21sh #> ", env->hist);
-		parser(str, env);
-		ft_strdel(&str);
-	}
-	return (0);
-}

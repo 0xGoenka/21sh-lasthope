@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:38:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 22:53:50 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/10 13:46:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**split_path(char **env)
 	{
 		tmp = ft_strsub(env[i], 5, ft_strlen(env[i]) - 5);
 		path = ft_strsplit(tmp, ':');
-		free(tmp);
+		ft_strdel(&tmp);
 		return (path);
 	}
 	else
@@ -50,6 +50,8 @@ int		is_exec(char **param)
 			ft_putendl(param[0]);
 			return (0);
 		}
+
+		return (1);
 	}
 	return (1);
 }
@@ -84,6 +86,7 @@ void	change_env_val(char **env, char *key, char *newval)
 			key = ft_saddc(key, '=', ft_strlen(key));
 			env[i] = ft_strjoin(key, newval);
 			ft_tabdel(split);
+			ft_strdel(&key);
 			return ;
 
 		}

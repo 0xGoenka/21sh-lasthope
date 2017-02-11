@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 14:28:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/30 21:54:31 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/10 13:57:34 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 t_hist *hist_init(void)
 {
 	t_hist *h;
+	int i;
 
+	i = 0;
 	h = (t_hist *)malloc(sizeof(t_hist));
 	h->tab = (char **)malloc(sizeof(char*) * HLEN);
 	h->pos = 0;
 	h->index = 0;
 	
-	//while (i < HLEN)
-	//{
-	//	tab[i] = (char *)malloc(sizeof(char) * 1);
-	//	tab[i][0] = 0;
-	//	i++;
-	//}
+	while (i < HLEN)
+	{
+		h->tab[i] = NULL;
+		i++;
+	}
 	return (h);
 }
 
