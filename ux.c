@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 21:13:49 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/12 16:09:11 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 bool	check_eol(t_line *line, int p)
 {
-	if ((line->pos + line->plen) % col() == 0)
+	int len;
+
+	len = line->pos + line->plen;
+	if (len % col() == 0 || len == )
 	{
 		tputs(tgetstr("do", 0), 0, outc);
 		if (p)
@@ -34,7 +37,7 @@ bool	check_bol(t_line *line, int p)
 	if ((line->pos + line->plen) % col() == col() - 1)
 	{
 		tputs(tgetstr("up", 0), 0, outc);
-		tputs(tgoto(tgetstr("ch", 0), 0, col() -1), 0, outc);
+		tputs(tgoto(tgetstr("ch", 0), 0, col() - 1), 0, outc);
 		if (p)
 			line->pos--;
 		return (1);

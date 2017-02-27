@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/11 00:31:15 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/12 16:09:06 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*readLine(char *prompt, t_hist *hist)
 	struct termios *old_term;
 
 	ft_signal();
-
 	if (!(old_term = def_term()))
 		disp_err(2);
 	line = struct_init(prompt, hist);
@@ -35,6 +34,6 @@ char	*readLine(char *prompt, t_hist *hist)
 	}
 	move_curs(line->len, *line);
 	restore_term(old_term);
-	hist_add(hist, line->str);
+	hist_add(hist, quotes(line->str));
 	return (clean_line(line));
 }

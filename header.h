@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 23:50:43 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/02/21 14:32:54 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define HLEN 30
 
 
+typedef
+
 typedef struct		s_hist
 {
 	char 		**tab;
@@ -68,6 +70,7 @@ typedef struct		s_line
 	int		plen;
 	int 		pos;
 	int		len;
+	int		*fukn;
 	t_hist		*h;
 }			t_line;
 
@@ -116,6 +119,8 @@ void    		print_end(t_line line);
 int     		posx(t_line line);
 int     		posy(t_line line);
 int     		leny(t_line line);
+
+bool			quotes_hist(t_line *line);
 
 void    		restore_curs(t_line line);
 void			move_curs(int x, t_line line);
