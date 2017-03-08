@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strfindreplace.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/08 15:52:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 16:00:31 by eleclet          ###   ########.fr       */
+/*   Created: 2017/03/08 16:38:05 by eleclet           #+#    #+#             */
+/*   Updated: 2017/03/09 00:01:10 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "libft.h"
 
-int main(int arc, char **argv)
+void		ft_strfindreplace(char *s, char c, char d)
 {
-	t_opt opt;
-
-	ft_printtab(argv);
-	opt = ft_getopt(argv, "ui");
-	ft_putendl("agr :");
-	ft_printtab(opt.arg);
-	ft_putstr("opt  ::  ");
-	ft_putendl(opt.opt);
-
-	return (0);
+	while (*s)
+	{
+		if (*s == c)
+			*s = d;
+		s++;
+	}
 }

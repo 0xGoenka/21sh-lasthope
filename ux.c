@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/12 16:09:11 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 00:00:16 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	check_eol(t_line *line, int p)
 	int len;
 
 	len = line->pos + line->plen;
-	if (len % col() == 0 || len == )
+	if (len % col() == 0 )
 	{
 		tputs(tgetstr("do", 0), 0, outc);
 		if (p)
@@ -52,7 +52,7 @@ void	print_end(t_line line)
 
 	tputs(tgetstr("cd", NULL), 0, outc);
 	s = line.str + line.pos;
-	ft_putstr(s);
+	printN(s);
 	restore_curs(line);
 	//debug(&line, line.pos+line.plen, leny(line) , posy(line));
 }
@@ -78,4 +78,30 @@ int	leny(t_line line)
 	i = (line.len + line.plen - 1 ) / col();
 
 	return (i);
+}
+
+void	printN(char *s)
+{
+	if (!ft_strchr(s, '\n'))
+		ft_putstr(s);
+	else
+	{
+		while (*s)
+		{
+			if (*s == '\n')
+			{
+				ft_putstr(RED);
+				ft_putchar('N');
+				ft_putstr(RESET);
+			}
+			else
+				ft_putchar(*s);
+			s++;
+		}
+	}
+	//t = ft_strdup(s);
+
+	//ft_strfindreplace(t, '\n', '#');
+	//ft_putstr(t);
+	//ft_strdel(&t);
 }

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 14:28:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 13:57:34 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/08 16:47:48 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_hist *hist_init(void)
 	h->tab = (char **)malloc(sizeof(char*) * HLEN);
 	h->pos = 0;
 	h->index = 0;
+	h->quote = NULL;
+	h->status = 0;
 	
 	while (i < HLEN)
 	{
@@ -33,7 +35,7 @@ t_hist *hist_init(void)
 
 void	hist_add(t_hist *h, char *s)
 {
-	if (s && *s)
+	if (s && *s && !h->status)
 	{
 		h->tab[h->index] = ft_strdup(s);
 		h->index++;
@@ -45,12 +47,10 @@ void	hist_add(t_hist *h, char *s)
 void	hist_read_up(t_line *l)
 {
 	if (l->h->art)
-	{
 		if (l->h->pos == 0)
 			l->h->pos = HLEN - 1;
 		else
 			l->h->pos--;
-	}
 	else
 		l->h->art = 1;
 	if (l->h->pos != l->h->index && l->h->tab[l->h->pos])
@@ -60,16 +60,13 @@ void	hist_read_up(t_line *l)
 		move_curs(0, *l);
 		l->pos = l->len = ft_strlen(l->str);
 		tputs(tgetstr("cd", 0), 0, outc);
-		ft_putstr(l->str);
+		printN(l->str);
 	}
 	else
-	{
 		if (l->h->pos == HLEN - 1)
 			l->h->pos = 0;
 		else
-			l->h->pos++;	
-	}
-
+			l->h->pos++;
 }
 
 void	hist_read_do(t_line *l)

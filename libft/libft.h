@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/08 20:39:32 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/08 16:39:58 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef				struct s_opt
 	char *opt;
 	char **arg;
 }
+
 t_opt;
 int				ft_err(char *msg, int ret);
 char				*ft_sdelc(char *s, int pos);
@@ -114,4 +115,5 @@ void				ft_lstadd(t_list **liste, t_list *new);
 void				ft_lstdel(t_list **liste, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_strfindreplace(char *s, char c, char d);
 #endif

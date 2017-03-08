@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/21 14:32:54 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/08 20:02:22 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@
 # define ALT_C s[0] == 27 && s[1] == 99 && s[2] == 0
 # define ALT_V s[0] == 27 && s[1] == 118 && s[2] == 0
 # define ENTER s[0] == 10 && s[1] == 0
+# define RED "\x1B[31m"
+# define RESET "\x1B[0m"
 # define HLEN 30
 
 
-typedef
 
 typedef struct		s_hist
 {
@@ -52,6 +53,8 @@ typedef struct		s_hist
 	int	 	index;
 	int		pos;
 	bool		art;
+	char		*quote;
+	int		status;
 }			t_hist;
 
 typedef struct		s_env
@@ -169,4 +172,7 @@ char			*get_env_val(char **env, char *key);
 bool			cd(char **env, char **line);
 void			super_exit(t_env *env);
 bool			b_echo(char **line);
+bool			need_quote(char *str);
+char			*quotes(t_hist *hist,char *str);
+void			printN(char *s);
 # endif
