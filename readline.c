@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/08 19:15:45 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 00:25:39 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ char	*readLine(char *prompt, t_hist *hist)
 	restore_term(old_term);
 	line->str = quotes(hist, line->str);
 	hist_add(hist, line->str);
-	//ft_putendl(line->str);
 	return (clean_line(line));
 }

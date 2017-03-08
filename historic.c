@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 14:28:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/08 16:47:48 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 00:27:23 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	hist_read_do(t_line *l)
 		move_curs(0, *l);
 		l->pos = ft_strlen(l->str);
 		tputs(tgetstr("cd", 0), 0, outc);
-		ft_putstr(l->str);
+		printN(l->str);
 	}
 	else if (l->h->art)
 	{

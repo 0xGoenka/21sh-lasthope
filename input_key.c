@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/08 01:35:06 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 00:34:53 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	key_pressed(char *s, t_line *line)
 	if (DEL) // key suppr
 		return (key_suppr(line));
 	if (CTRL_D)
-		return (-1);
+		return (ctrl_d(line));
 	if (CTRL_DO) // down
 		return (key_do(line));
 		if (CTRL_UP) // up

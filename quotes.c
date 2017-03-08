@@ -6,20 +6,16 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/08 19:32:15 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 00:27:24 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-/*bool	quotes_hist(t_line *line)
-{
-	
-}*/
-
 char	*quotes(t_hist *hist,char *str)
 {
 	char *s1;
+	char *s2;
 
 	if (!need_quote(str) || hist->status)
 		return str;
@@ -28,7 +24,9 @@ char	*quotes(t_hist *hist,char *str)
 	{
 		s1 = readLine("quotes !>", hist);
 		s1 = ft_saddc(s1, '\n', 0);
-		str = ft_strjoin(str, s1);
+		s2 = ft_strjoin(str, s1);
+		ft_strdel(&str);
+		str = s2;
 		ft_strdel(&s1);
 	}
 	hist->status = 0;
