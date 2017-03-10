@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 00:27:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:12:58 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,57 @@ bool	need_quote(char *str)
 	return (0);
 }
 
+char	*parse_quote(char *s)
+{
+	int i;
+	char c;
+
+	i = 0;
+	while (s && s[i])
+	{
+		if (s[i] == '\'' || s[i] == '\"')
+		{
+			c = s[i];
+			s = ft_sdelc(s, i);
+			while (s[i] && s[i] != c)
+			{
+				i++;
+			}
+				s = ft_sdelc(s, i);
+				i--;
+		}
+		i++;
+	}
+	return (s);
+}
+	
+	/*
+	while (s && *s)
+	{
+		if (*s == '\'')
+		{
+			*s = '#';
+			s++;
+			while (*s && *s != '\'')
+				s++;
+			if (*s == 0)
+				break;
+			*s = '#';
+		}
+		if (*s == '\"')
+		{
+			*s = '%';
+			s++;
+			while (*s && *s != '\"')
+				s++;
+			if (*s == 0)
+				break;
+			*s = '%';
+		}
+		s++;
+	}
+	return (s);
+}*/
 /*int main(char **argv, int argc)
 {
 	if (need_quote("dsadasds\'as\'ad"))

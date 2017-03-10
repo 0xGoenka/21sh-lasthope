@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/08 01:35:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:18:16 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(void)
 		str = readLine("21sh #> ", env->hist);
 		//hist_add(env->hist, str);
 		parser(str, env);
-		ft_strdel(&str);
+		//ft_strdel(&str);
 	}
 	return (0);
 }

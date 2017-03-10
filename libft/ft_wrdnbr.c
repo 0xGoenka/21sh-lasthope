@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 10:15:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/01 10:27:40 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:47:49 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	ft_wrdnbr(char *s, char c)
 
 	i = 0;
 	j = 0;
-	while (s[i])
+	if (ft_strlen(s) == 0)
+		return (0);
+	while (s && s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;

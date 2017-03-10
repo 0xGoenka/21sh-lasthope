@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 10:28:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/09 16:03:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:45:29 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ char	**ft_strsplit(char *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(wrd = ft_wrdnbr(s, c)))
-	return (NULL);
+	if ((wrd = ft_wrdnbr(s, c)) == 0)
+		return (NULL);
 	i = 0;
 	r = (char **)malloc(sizeof(char *) * (wrd + 1));
 	r[wrd] = NULL;

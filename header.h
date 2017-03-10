@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 00:32:16 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 12:15:47 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,4 +177,5 @@ char			*quotes(t_hist *hist,char *str);
 void			printN(char *s);
 
 int			ctrl_d(t_line *line);
+char			*parse_quote(char *s);
 # endif

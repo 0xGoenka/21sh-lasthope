@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 18:36:41 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 15:21:07 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:18:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ char	*ft_sdelc(char *s, int pos)
 	while (i <= len)
 	{
 		if (pos == i)
-			k = 1;
-		
-		
+			k = 1;	
 			r[i] = s[i + k];
-		
 		i++;
 	}
 	ft_strdel(&s);

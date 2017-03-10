@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/11 00:31:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/09 11:12:05 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char		**parser(char *str, t_env *env)
 	char **param;
 	char **path;
 
+	str = parse_quote(str);
+	ft_putendl(str);
 	path = NULL;
 	if (!(param = ft_strsplit(str,' ')))
 		return (NULL);
