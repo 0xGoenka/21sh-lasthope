@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:38:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 13:46:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 18:24:22 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	**split_path(char **env)
 {
-	char		**path;
-	char		*tmp;
+	char	**path;
+	char	*tmp;
 	int		i;
 
 	i = 0;
@@ -50,7 +50,6 @@ int		is_exec(char **param)
 			ft_putendl(param[0]);
 			return (0);
 		}
-
 		return (1);
 	}
 	return (1);
@@ -69,10 +68,11 @@ char	*get_home_dir(char **env)
 		homepath = ft_strsub(env[i], 5, ft_strlen(env[i]) - 5);
 	return (homepath);
 }
+
 void	change_env_val(char **env, char *key, char *newval)
 {
-	int i;
-	char **split;
+	int		i;
+	char	**split;
 
 	i = 0;
 	if (!env || !key)
@@ -88,25 +88,21 @@ void	change_env_val(char **env, char *key, char *newval)
 			ft_tabdel(split);
 			ft_strdel(&key);
 			return ;
-
 		}
 		ft_tabdel(split);
 		i++;
-	}	
-
+	}
 }
-
 
 char	*get_env_val(char **env, char *key)
 {
-	char **split;
-	char *r;
-	int i;
+	char	**split;
+	char	*r;
+	int		i;
 
 	i = 0;
 	if (!env || !key)
 		return (NULL);
-
 	while (env[i])
 	{
 		split = ft_strsplit(env[i], '=');

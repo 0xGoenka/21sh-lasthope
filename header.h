@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 18:02:35 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 20:10:20 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,4 +190,6 @@ t_tree			*fill_tree(char *str);
 int				type_cmd(char *str);
 int				find_next(char *str);
 void			read_tree(t_tree *tree);
+void			tree_exec(t_tree *tree, char *str, t_env *env);
+char			*ft_strchrskipquote(char *s, char c);
 # endif

@@ -6,19 +6,18 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 00:47:19 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 18:26:59 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
 
 bool	check_eol(t_line *line, int p)
 {
 	int len;
 
 	len = line->pos + line->plen;
-	if (len % col() == 0 )
+	if (len % col() == 0)
 	{
 		tputs(tgetstr("do", 0), 0, outc);
 		if (p)
@@ -67,7 +66,6 @@ int	posy(t_line line)
 	int i;
 
 	i = (line.pos + line.plen) / col();
-
 	return (i);
 }
 
@@ -75,8 +73,7 @@ int	leny(t_line line)
 {
 	int i;
 
-	i = (line.len + line.plen - 1 ) / col();
-
+	i = (line.len + line.plen - 1) / col();
 	return (i);
 }
 
@@ -100,7 +97,6 @@ void	printN(char *s)
 		}
 	}
 	//t = ft_strdup(s);
-
 	//ft_strfindreplace(t, '\n', '#');
 	//ft_putstr(t);
 	//ft_strdel(&t);

@@ -6,11 +6,21 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 18:07:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 19:21:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void		tree_exec(t_tree *tree, char *str, t_env *env)
+{
+	if (tree == NULL)
+		return ;
+	if (tree->type == 0)
+		parser(tree->str, env);
+	tree_exec(tree->left, str, env);
+	tree_exec(tree->right, str, env);
+}
 
 t_tree		*fill_tree(char *str)
 {
@@ -37,30 +47,51 @@ t_tree		*fill_tree(char *str)
 
 int			find_next(char *str)
 {
-
-	if (ft_strchr(str, ';'))
-		return (ft_strchr(str, ';') - str);
-	return (ft_strchr(str, '|') - str);
+	if (ft_strchrskipquote(str, ';'))
+		return (ft_strchrskipquote(str, ';') - str);
+	return (ft_strchrskipquote(str, '|') - str);
 }
+
 int			type_cmd(char *str)
 {
-			if (ft_strchr(str, ';'))
-				return (1);
-			if (ft_strchr(str, '|'))
-				return (2);
-			return (0);
+	if (ft_strchrskipquote(str, ';'))
+		return (1);
+	if (ft_strchrskipquote(str, '|'))
+		return (2);
+	return (0);
+}
+
+char		*ft_strchrskipquote(char *s, char c)
+{
+	char d;
+		if (!s)
+			return (NULL);
+		while (*s != c)
+		{
+			if (*s == 0)
+				return (NULL);
+			if (*s == '\'' || *s == '\"')
+			{
+				d = *s;
+				s++;
+				while (*s != d)
+					s++;
+			}
+			s++;
+		}
+		return (s);
 }
 
 void		read_tree(t_tree *tree)
 {
-		if (tree == NULL)
-			return ;
-		if (tree->type == 0)
-			ft_putendl(tree->str);
-		if (tree->type == 1)
-			ft_putendl(";");
-		if (tree->type == 2)
-			ft_putendl("|");
-		read_tree(tree->left);
-		read_tree(tree->right);
+	if (tree == NULL)
+		return ;
+	if (tree->type == 0)
+		ft_putendl(tree->str);
+	if (tree->type == 1)
+		ft_putendl(";");
+	if (tree->type == 2)
+		ft_putendl("|");
+	read_tree(tree->left);
+	read_tree(tree->right);
 }

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 11:12:05 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 20:10:16 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		**parser(char *str, t_env *env)
 	char **path;
 
 	str = parse_quote(str);
-	ft_putendl(str);
+	//ft_putendl(str);
 	path = NULL;
 	if (!(param = ft_strsplit(str,' ')))
 		return (NULL);
@@ -46,3 +46,11 @@ bool		buildin(char **line, t_env *env)
 		return (b_echo(line));
 	return (0);
 }
+
+/*void	tree_start(t_tree *tree, char *str, t_env *env)
+{
+	if (tree == NULL)
+		return ;
+	if (tree->type == 0)
+		parser(tree->str, t_env);
+}*/
