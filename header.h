@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 12:15:47 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/13 18:02:35 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ typedef struct		s_data
 	t_env		*e;
 }			t_data;
 
+typedef	struct		s_tree
+{
+	int				type;
+	char 			*str;
+	struct s_tree	*left;
+	struct s_tree	*right;
+}					t_tree;
+
 int			col(void);
 int			row(void);
 
@@ -155,13 +163,13 @@ bool			buildin(char **line, t_env *env);
 char			**parser(char *str, t_env *env);
 bool			unset_env(char **line, t_env *env);
 
-int			disp_err(int code);
+int				disp_err(int code);
 
 char			**split_path(char **env);
-int			is_exec(char **param);
+int				is_exec(char **param);
 char			*get_home_dir(char **env);
-int			basic_exec(char **param, char **env);
-int			exec_bin(char **env, char **param, char **path);
+int				basic_exec(char **param, char **env);
+int				exec_bin(char **env, char **param, char **path);
 bool			env_alone(char **env, t_opt opt);
 bool			env_i(t_opt opt);
 bool			env_u(char **env, t_opt opt);
@@ -176,6 +184,10 @@ bool			need_quote(char *str);
 char			*quotes(t_hist *hist,char *str);
 void			printN(char *s);
 
-int			ctrl_d(t_line *line);
+int				ctrl_d(t_line *line);
 char			*parse_quote(char *s);
+t_tree			*fill_tree(char *str);
+int				type_cmd(char *str);
+int				find_next(char *str);
+void			read_tree(t_tree *tree);
 # endif

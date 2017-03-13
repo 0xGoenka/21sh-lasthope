@@ -37,6 +37,7 @@ SRC =	main.c		\
 	exit.c		\
 	quotes.c	\
 	somefunc.c	\
+	binarytree.c\
 
 OBJ = $(SRC:.c=.o)
 
