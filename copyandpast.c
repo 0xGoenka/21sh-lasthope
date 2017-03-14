@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copyandpast.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/14 18:36:13 by eleclet           #+#    #+#             */
+/*   Updated: 2017/03/14 18:46:50 by eleclet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 bool	copy(t_line *line)
@@ -22,15 +34,15 @@ bool	copy(t_line *line)
 
 void	copy_read(t_line *line)
 {
-	char s[7];
-	int start;
+	char	s[7];
+	int		start;
 
 	start = line->pos;
-	while (42)
+	while (s[0] != 27 || s[1] != 91 || s[2] != 0)
 	{
 //debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 		ft_bzero(s, 7);
-		read(0, s, 6);	
+		read(0, s, 6);
 		if (s[0] == 27 && s[1] == 91 && s[2] == 67 && line->len > line->pos)
 		{
 			tputs(tgetstr("mr", 0), 0, outc);
@@ -40,20 +52,18 @@ void	copy_read(t_line *line)
 		}
 		if (s[0] == 27 && s[1] == 91 && s[2] == 68 && line->pos != start)
 		{
-			move_curs(line->pos ,*line);
+			move_curs(line->pos, *line);
 			ft_putchar(line->str[line->pos]);
 			line->pos--;
-			move_curs(line->pos ,*line);
-			check_bol(line,0);
-
+			move_curs(line->pos, *line);
+			check_bol(line, 0);
 		}
-		if (s[0] == 27 && s[1] == 99 && s[2] == 0)
-			break;
-	}	
+		//if (s[0] == 27 && s[1] == 99 && s[2] == 0)
+		//	break ;
+	}
 }
+
 void	paste(t_line *line)
 {
 	s_add_s(line);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 19:15:40 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 16:33:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_line	*struct_init(char *prompt, t_hist *h)
 	line->plen = ft_strlen(prompt);
 	line->pos = 0;
 	line->len = 0;
+	line->quote = NULL;
 	line->h = h;
 	i = (line->h->index - 1) % HLEN;
 	if (i < 0)
@@ -35,5 +36,6 @@ t_line	*struct_init(char *prompt, t_hist *h)
 	else
 		line->h->pos = i;
 	line->h->art = 0;
+	line->h->ctrl_c = 0;
 	return (line);
 }

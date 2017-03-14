@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 19:21:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:28:28 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,23 @@ int			type_cmd(char *str)
 char		*ft_strchrskipquote(char *s, char c)
 {
 	char d;
-		if (!s)
+
+	if (!s)
+		return (NULL);
+	while (*s != c)
+	{
+		if (*s == 0)
 			return (NULL);
-		while (*s != c)
+		if (*s == '\'' || *s == '\"')
 		{
-			if (*s == 0)
-				return (NULL);
-			if (*s == '\'' || *s == '\"')
-			{
-				d = *s;
-				s++;
-				while (*s != d)
-					s++;
-			}
+			d = *s;
 			s++;
+			while (*s != d)
+				s++;
 		}
-		return (s);
+		s++;
+	}
+	return (s);
 }
 
 void		read_tree(t_tree *tree)

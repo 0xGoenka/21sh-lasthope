@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 20:10:20 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 16:36:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@
 
 typedef struct		s_hist
 {
-	char 		**tab;
+	char 	**tab;
 	int	 	index;
 	int		pos;
-	bool		art;
-	char		*quote;
+	bool	art;
+	char	*quote;
 	int		status;
+	int		ctrl_c;
 }			t_hist;
 
 typedef struct		s_env
@@ -70,12 +71,13 @@ typedef struct		s_line
 	char		*str;
 	char		*prompt;
 	char		*buffer_copy;
-	int		plen;
+	char		*quote;
+	int			plen;
 	int 		pos;
-	int		len;
-	int		*fukn;
+	int			len;
+	int			*fukn;
 	t_hist		*h;
-}			t_line;
+}				t_line;
 
 typedef struct		s_data
 {
@@ -192,4 +194,7 @@ int				find_next(char *str);
 void			read_tree(t_tree *tree);
 void			tree_exec(t_tree *tree, char *str, t_env *env);
 char			*ft_strchrskipquote(char *s, char c);
+t_line			*stock(t_line *l, int mode);
+bool			main_quote(t_line *line);
+
 # endif

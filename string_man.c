@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 17:02:31 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/25 16:13:03 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:31:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*s_add(char *s, char c, int pos)
 {
-	char *r;
-	int i;
-	int k;
-	int len;
-	
+	char	*r;
+	int		i;
+	int		k;
+	int		len;
+
 	k = 0;
 	i = 0;
 	len = ft_strlen(s) + 1;
@@ -43,11 +43,11 @@ char	*s_add(char *s, char c, int pos)
 
 char	*s_del(char *s, int pos)
 {
-	char *r;
-	int len;
-	int i;
-	int k;
-	
+	char	*r;
+	int		len;
+	int		i;
+	int		k;
+
 	k = 0;
 	i = 0;
 	len = ft_strlen(s) - 1;
@@ -59,10 +59,7 @@ char	*s_del(char *s, int pos)
 	{
 		if (pos == i)
 			k = 1;
-		
-		
-			r[i] = s[i + k];
-		
+		r[i] = s[i + k];
 		i++;
 	}
 	ft_strdel(&s);
@@ -71,9 +68,9 @@ char	*s_del(char *s, int pos)
 
 void	s_add_s(t_line *l)
 {
-	char *s;
-	int bufflen;
-	
+	char	*s;
+	int		bufflen;
+
 	bufflen = ft_strlen(l->buffer_copy);
 	s = (char *)malloc(sizeof(char) * l->len + bufflen + 1);
 	s[l->len + bufflen] = 0;

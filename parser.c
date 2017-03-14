@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 20:10:16 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:32:22 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		**parser(char *str, t_env *env)
 	str = parse_quote(str);
 	//ft_putendl(str);
 	path = NULL;
-	if (!(param = ft_strsplit(str,' ')))
+	if (!(param = ft_strsplit(str, ' ')))
 		return (NULL);
 	if (!buildin(param, env))
 		if (basic_exec(param, env->t))
@@ -28,7 +28,6 @@ char		**parser(char *str, t_env *env)
 	ft_tabdel(param);
 	return (NULL);
 }
-
 
 bool		buildin(char **line, t_env *env)
 {

@@ -6,16 +6,16 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 20:10:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:29:37 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int main(void)
+int		main(void)
 {
 	//if (!error())
-	//	return (0);
+	//eturn (0);
 	t_env	*env;
 	char	*str;
 

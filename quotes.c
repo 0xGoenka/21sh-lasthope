@@ -6,18 +6,18 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 20:10:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:23:07 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	*quotes(t_hist *hist,char *str)
+/*char	*quotes(t_hist *hist,char *str)
 {
 	char *s1;
 	char *s2;
 
-	if (!need_quote(str) || hist->status)
+	if (!need_quote(str) || hist->status || hist->ctrl_c)
 		return str;
 	hist->status = 1;
 	while (need_quote(str))
@@ -31,6 +31,29 @@ char	*quotes(t_hist *hist,char *str)
 	}
 	hist->status = 0;
 	return (str);
+}*/
+
+bool	main_quote(t_line *line)
+{
+
+	if (line->quote)
+	line->str = ft_saddc(line->str, '\n', 0);
+	line->quote = ft_strjoin(line->quote, line->str);
+	//ft_putstr("\n output : ");
+	//ft_putendl(line->quote);
+	if (!need_quote(line->quote))
+	{
+		ft_strdel(&line->str);
+		line->str = line->quote;
+		line->plen = 8;
+		return (0);
+	}
+	ft_strdel(&line->str);
+	line->pos = 0;
+	line->len = 0;
+	line->plen = ft_strlen("quotes !> ");
+	ft_putstr("\nquotes !> ");
+	return (1);
 }
 
 bool	need_quote(char *str)
