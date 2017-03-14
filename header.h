@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 16:36:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/14 18:53:22 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,5 +196,6 @@ void			tree_exec(t_tree *tree, char *str, t_env *env);
 char			*ft_strchrskipquote(char *s, char c);
 t_line			*stock(t_line *l, int mode);
 bool			main_quote(t_line *line);
+void			ft_siguseless(int i);
 
 # endif
