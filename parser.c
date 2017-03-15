@@ -6,27 +6,28 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:32:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 16:45:55 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char		**parser(char *str, t_env *env)
+char		*parser(char *str, t_env *env)
 {
 	char **param;
 	char **path;
 
-	str = parse_quote(str);
+	//str = parse_quote(str);
 	//ft_putendl(str);
 	path = NULL;
 	if (!(param = ft_strsplit(str, ' ')))
-		return (NULL);
+		return (str);
 	if (!buildin(param, env))
 		if (basic_exec(param, env->t))
 			exec_bin(env->t, param, path = split_path(env->t));
 	ft_tabdel(param);
-	return (NULL);
+	//ft_strdel(&str);
+	return (str);
 }
 
 bool		buildin(char **line, t_env *env)

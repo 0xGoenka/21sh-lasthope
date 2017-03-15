@@ -48,7 +48,7 @@ $(NAME) : $(OBJ)
 	gcc $(OBJ)  $(CFLAGS) -ltermcap -Llibft -lft -o $(NAME)
 	@echo "$(NAME) built"
 
-%.o: %.c
+%.o: %.c header.h
 	gcc -c $(CFLAGS) $<
 
 clean :

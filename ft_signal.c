@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 11:28:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:54:00 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 11:22:28 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_signal(void)
 			signal(sig, ft_sigint);
 		else if (sig == SIGINT)
 			signal(sig, ft_sigint);
-		else
+		else if (sig != SIGUSR2)
 			signal(sig, ft_siguseless);
 		sig++;
 	}

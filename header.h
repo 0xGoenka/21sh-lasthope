@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:53:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 16:34:37 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ t_env			*env_init(void);
 bool			display_env(char **line, t_env *env);
 bool			set_env(char **line, t_env *env);
 bool			buildin(char **line, t_env *env);
-char			**parser(char *str, t_env *env);
+char			*parser(char *str, t_env *env);
 bool			unset_env(char **line, t_env *env);
 
 int				disp_err(int code);
@@ -197,5 +197,6 @@ char			*ft_strchrskipquote(char *s, char c);
 t_line			*stock(t_line *l, int mode);
 bool			main_quote(t_line *line);
 void			ft_siguseless(int i);
+void			tree_clean(t_tree *tree);
 
 # endif

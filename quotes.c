@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:23:07 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 17:49:43 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@
 
 bool	main_quote(t_line *line)
 {
+	char *tmp;
 
 	if (line->quote)
 	line->str = ft_saddc(line->str, '\n', 0);
-	line->quote = ft_strjoin(line->quote, line->str);
+	tmp = ft_strjoin(line->quote, line->str);
+	ft_strdel(&line->quote);
+	line->quote = tmp;
 	//ft_putstr("\n output : ");
 	//ft_putendl(line->quote);
 	if (!need_quote(line->quote))
@@ -85,6 +88,7 @@ char	*parse_quote(char *s)
 {
 	int i;
 	char c;
+	char *r;
 
 	i = 0;
 	while (s && s[i])
@@ -98,11 +102,15 @@ char	*parse_quote(char *s)
 				i++;
 			}
 				s = ft_sdelc(s, i);
+				printN(s);
+				printf("ft strlen : %zu\n", ft_strlen(s));
 				i--;
 		}
 		i++;
+		r = ft_strdup(s);
+		ft_strdel(&s);
 	}
-	return (s);
+	return (r);
 }
 	
 	/*

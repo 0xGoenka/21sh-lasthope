@@ -6,11 +6,12 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 18:36:41 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 11:18:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 17:57:19 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 
 char	*ft_sdelc(char *s, int pos)
 {
@@ -36,4 +37,3 @@ char	*ft_sdelc(char *s, int pos)
 	ft_strdel(&s);
 	return (r);
 }
-

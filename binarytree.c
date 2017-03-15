@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:28:28 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/15 17:51:18 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void		tree_exec(t_tree *tree, char *str, t_env *env)
 {
+	//char *tmp;
+
 	if (tree == NULL)
 		return ;
 	if (tree->type == 0)
+	{
 		parser(tree->str, env);
+			//ft_strdel(&tmp);
+		//if (!tmp)
+		
+		ft_strdel(&tree->str);
+	}
 	tree_exec(tree->left, str, env);
 	tree_exec(tree->right, str, env);
 }
@@ -35,14 +43,31 @@ t_tree		*fill_tree(char *str)
 	tree->left = NULL;
 	tree->type = type_cmd(str);
 	if (tree->type == 0)
-		tree->str = ft_strdup(str);
+	{
+		tree->str = parse_quote(str);
+
+	}
 	else
 	{
 		tree->str = NULL;
 		tree->left = fill_tree(ft_strndup(str, find_next(str)));
 		tree->right = fill_tree(ft_strdup(str + find_next(str) + 1));
+		ft_strdel(&str);
 	}
 	return (tree);
+}
+
+void		tree_clean(t_tree *tree)
+{
+			if (!tree)
+				return ;
+			ft_strdel(&tree->str);
+		
+			tree_clean(tree->left);
+			tree_clean(tree->right);
+			if (tree)
+			free(tree);
+			tree = NULL;
 }
 
 int			find_next(char *str)
