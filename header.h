@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 18:36:44 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 19:30:44 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,5 +200,6 @@ void			ft_siguseless(int i);
 void			tree_clean(t_tree *tree);
 char			*replace_dollar(char *s, char **tab);
 char			*ft_repdol(char *cmd, char *var, int pos, int lenvar);
+void			ft_signal2(void);
 
 # endif

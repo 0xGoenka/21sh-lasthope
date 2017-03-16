@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 19:19:13 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 19:18:51 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ t_line	*struct_init(char *prompt, t_hist *h)
 
 	i = 0;
 	line = (t_line *)malloc(sizeof(t_line));
-
-	//line->str = (char *)malloc(sizeof(char) * 1);
 	line->str = NULL;
 	line->buffer_copy = NULL;
 	line->prompt = ft_strdup(prompt);
