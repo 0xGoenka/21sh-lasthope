@@ -38,6 +38,8 @@ SRC =	main.c		\
 	quotes.c	\
 	somefunc.c	\
 	binarytree.c\
+	ft_err.c	\
+	dollar.c	\
 
 OBJ = $(SRC:.c=.o)
 

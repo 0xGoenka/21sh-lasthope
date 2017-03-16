@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:13:10 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 18:36:01 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 13:57:11 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	cd_path(char **env, t_opt opt)
 	{
 		ft_strdel(&tmp);
 		if (!(home = get_env_val(env, "HOME")))
-			return (ft_err("Home var not set", 1));
+			return (ft_err("Home var not set", NULL, NULL, 1));
 		tmp2 = ft_sdelc(ft_strdup(opt.arg[0]), 0);
 		tmp = ft_strjoin(home, tmp2);
 		ft_strdel(&tmp2);
@@ -87,7 +87,7 @@ static bool	cd_path(char **env, t_opt opt)
 	else
 	{
 		ft_strdel(&tmp);
-		return (ft_err("cd : no such directory.!", 1));
+		return (ft_err("cd : no such directory.!", NULL, NULL, 1));
 	}
 	return (1);
 }
@@ -103,15 +103,15 @@ bool		cd(char **env, char **line)
 	if (opt.status)
 		return (1);
 	if (ft_tablen(opt.arg) > 1)
-		return (ft_err("cd : too many args.", 1));
+		return (ft_err("cd : too many args.", NULL, NULL, 1));
 	if (cd_path(env, opt))
 		return (1);
 	if (ft_tablen(line) == 1)
 	{
 		if (!(home = get_env_val(env, "HOME")))
-			return (ft_err("cd : home var not set.", 1));
+			return (ft_err("cd : home var not set.", NULL, NULL, 1));
 		if (chdir(home))
-			return (ft_err("cd : no such directory.", 1));
+			return (ft_err("cd : no such directory.", NULL, NULL, 1));
 	}
 	return (1);
 }

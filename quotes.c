@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/15 17:49:43 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 18:55:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ bool	main_quote(t_line *line)
 	tmp = ft_strjoin(line->quote, line->str);
 	ft_strdel(&line->quote);
 	line->quote = tmp;
-	//ft_putstr("\n output : ");
-	//ft_putendl(line->quote);
 	if (!need_quote(line->quote))
 	{
 		ft_strdel(&line->str);
@@ -84,6 +82,40 @@ bool	need_quote(char *str)
 	return (0);
 }
 
+char	*replace_dollar(char *s, char **tab)
+{
+	char *r = NULL;
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	//printf("s = %s\n", s);
+	while (s &&s[i])
+	{
+		if (s[i] == '\'')
+			while (s[++i] != '\'' && s[i]);
+		if (s[i] == '$')
+		{
+			j = i+ 1;
+			while (s[j] && ft_isletternum(s[j]) && s[j] != ' ')
+				j++;
+			r = ft_strndup(s + i + 1 , j - i - 1);
+			if ((j = ft_tabchr(tab, r, '=')) == -1)
+			{
+				while (s[i] && s[i] != ' ')
+					s = ft_sdelc(s, i);
+			}
+			else
+			{
+				s = (ft_repdol(s, tab[j] + ft_strlen(r) + 1, i , ft_strlen(r) + 1));
+			}
+		}
+		i++;
+	}
+	ft_strdel(&r);
+	return (s);
+}
 char	*parse_quote(char *s)
 {
 	int i;
@@ -98,18 +130,13 @@ char	*parse_quote(char *s)
 			c = s[i];
 			s = ft_sdelc(s, i);
 			while (s[i] && s[i] != c)
-			{
 				i++;
-			}
-				s = ft_sdelc(s, i);
-				printN(s);
-				printf("ft strlen : %zu\n", ft_strlen(s));
-				i--;
+			s = ft_sdelc(s, i--);
 		}
 		i++;
-		r = ft_strdup(s);
-		ft_strdel(&s);
 	}
+	r = ft_strdup(s);
+	ft_strdel(&s);
 	return (r);
 }
 	

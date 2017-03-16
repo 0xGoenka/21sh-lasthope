@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 14:15:04 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/15 18:19:34 by eleclet          ###   ########.fr       */
+/*   Created: 2017/02/08 20:35:14 by eleclet           #+#    #+#             */
+/*   Updated: 2017/03/16 14:14:19 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-void	ft_strdel(char **as)
+int	ft_err(char *msg, char *var1, char *var2, int ret)
 {
-	if (as && *as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+	ft_putstr("\x1B[31m");
+	ft_putstr(msg);
+	ft_putstr("\x1B[0m");
+	printN(var1);
+	ft_putendl(var2);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/15 16:34:37 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 18:36:44 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void			printN(char *s);
 
 int				ctrl_d(t_line *line);
 char			*parse_quote(char *s);
-t_tree			*fill_tree(char *str);
+t_tree			*fill_tree(char *str, char **t);
 int				type_cmd(char *str);
 int				find_next(char *str);
 void			read_tree(t_tree *tree);
@@ -198,5 +198,7 @@ t_line			*stock(t_line *l, int mode);
 bool			main_quote(t_line *line);
 void			ft_siguseless(int i);
 void			tree_clean(t_tree *tree);
+char			*replace_dollar(char *s, char **tab);
+char			*ft_repdol(char *cmd, char *var, int pos, int lenvar);
 
 # endif

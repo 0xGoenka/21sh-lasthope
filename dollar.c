@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pute.c                                             :+:      :+:    :+:   */
+/*   dollar.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 14:09:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 14:29:22 by eleclet          ###   ########.fr       */
+/*   Created: 2017/03/16 18:34:21 by eleclet           #+#    #+#             */
+/*   Updated: 2017/03/16 18:54:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		main()
+char		*ft_repdol(char *cmd, char *tabvar, int pos, int lenvar)
 {
-	char *str = "'1 | 2; '3 ; 4 ; 5 | 6 ";
+	char *r;
+	int cmdlen;
 
-	ft_putstr(parse_quote(ft_strdup(str)));
-	return (0);
+	cmdlen = ft_strlen(cmd);
+	r = malloc(sizeof(char) * (cmdlen - lenvar + ft_strlen(tabvar) + 1));
+	r[cmdlen - lenvar + ft_strlen(tabvar)] = 0;
+	ft_strncpy(r, cmd, pos);
+	ft_strncpy(r + pos, tabvar, ft_strlen(tabvar));
+	ft_strcpy(r + pos + ft_strlen(tabvar), cmd + pos + lenvar);
+	ft_strdel(&cmd);
+	return (r);
 }

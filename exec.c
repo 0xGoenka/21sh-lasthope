@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:03:36 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/10 13:42:25 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/16 11:24:34 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ int	exec_bin(char **env, char **param, char **path)
 		ft_strdel(&tmp);
 	}
 	ft_tabdel(path);
-	return (ft_err("shell : command not found1", 1));
+	return (ft_err("shell : command not found : ", param[0], NULL, 1));
 }
