@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 18:34:21 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 18:54:26 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 11:54:48 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char		*ft_repdol(char *cmd, char *tabvar, int pos, int lenvar)
 
 	cmdlen = ft_strlen(cmd);
 	r = malloc(sizeof(char) * (cmdlen - lenvar + ft_strlen(tabvar) + 1));
+	printf("malloc size = %lu\n", cmdlen - lenvar + ft_strlen(tabvar) + 1);
 	r[cmdlen - lenvar + ft_strlen(tabvar)] = 0;
 	ft_strncpy(r, cmd, pos);
 	ft_strncpy(r + pos, tabvar, ft_strlen(tabvar));

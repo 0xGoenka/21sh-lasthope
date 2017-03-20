@@ -14,32 +14,34 @@ NAME = sh
 CFLAGS = -Werror -Wall -Wextra -g
 
 SRC =	main.c		\
-	error.c		\
-	termcaps.c	\
+	error.c			\
+	termcaps.c		\
 	get_term_size.c	\
 	string_man.c	\
-	struct_op.c	\
+	struct_op.c		\
 	copyandpast.c	\
-	historic.c 	\
-	debug.c		\
-	readline.c	\
-	input_key.c	\
-	sys.c 		\
-	ux.c 		\
-	outc.c		\
-	ft_signal.c	\
-	env.c		\
-	parser.c	\
-	disp_err.c	\
-	exec.c		\
-	sys_utils.c	\
-	cd.c		\
-	exit.c		\
-	quotes.c	\
-	somefunc.c	\
-	binarytree.c\
-	ft_err.c	\
-	dollar.c	\
+	historic.c 		\
+	debug.c			\
+	readline.c		\
+	input_key.c		\
+	sys.c 			\
+	ux.c 			\
+	outc.c			\
+	ft_signal.c		\
+	env.c			\
+	parser.c		\
+	disp_err.c		\
+	exec.c			\
+	sys_utils.c		\
+	cd.c			\
+	exit.c			\
+	quotes.c		\
+	somefunc.c		\
+	binarytree.c	\
+	ft_err.c		\
+	dollar.c		\
+	ft_sigwinch.c	\
+	pipe.c			\
 
 OBJ = $(SRC:.c=.o)
 

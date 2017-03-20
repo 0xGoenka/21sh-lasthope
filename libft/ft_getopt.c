@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 15:31:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/09 16:01:19 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 12:17:46 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	print_err(char *s, char c)
 
 static char	*ret_opt(char **line, char *allowed, int *status)
 {
-	char *r;
-	int i;
-	int j;
+	char	*r;
+	int		i;
+	int		j;
 
 	r = NULL;
 	i = 0;
@@ -32,7 +32,7 @@ static char	*ret_opt(char **line, char *allowed, int *status)
 	while (line[++i])
 	{
 		if (line[i][0] != '-' || ft_strcmp(line[i], "--") == 0)
-			break;
+			break ;
 		while (line[i][0] && line[i][++j])
 		{
 			if (!ft_strchr(allowed, line[i][j]))
@@ -51,8 +51,8 @@ static char	*ret_opt(char **line, char *allowed, int *status)
 
 static char	**ret_arg(char **line)
 {
-	int i;
-	char **r;
+	int		i;
+	char	**r;
 
 	r = NULL;
 	i = 0;
@@ -69,13 +69,12 @@ static char	**ret_arg(char **line)
 	return (r);
 }
 
-t_opt	ft_getopt(char **line, char *allowed)
+t_opt		ft_getopt(char **line, char *allowed)
 {
-	t_opt r;
-	int status;
+	t_opt	r;
+	int		status;
 
 	status = 0;
-
 	r.opt = ret_opt(line, allowed, &status);
 	r.arg = ret_arg(line);
 	r.status = status;

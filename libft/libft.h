@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 18:36:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 16:49:13 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int					ft_strcnt(char *s, char c);
 char				**ft_tabdup(char **src);
 char				**ft_tabrmstr(char **t, char *s);
 void				ft_tabdel(char **t);
+void				ft_tabndel(char **t, int len);
 void				ft_printtab(char **t);
 char				**ft_tabaddstr(char **src, char *str);
 int					ft_tablen(char **t);

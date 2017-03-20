@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 21:56:23 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 17:20:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 12:03:14 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	ft_tabchr(char **tab, char *s, char split)
 {
-	int r;
-	char **arg;
-	char **arg1;
+	int		r;
+	char	**arg;
+	char	**arg1;
 
 	arg = ft_strsplit(s, split);
-
 	r = 0;
 	if (!tab || !arg)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 19:30:44 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/20 15:45:46 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define ENTER s[0] == 10 && s[1] == 0
 # define RED "\x1B[31m"
 # define RESET "\x1B[0m"
-# define HLEN 30
+# define HLEN 5
 
 
 
@@ -96,10 +96,10 @@ typedef	struct		s_tree
 int			col(void);
 int			row(void);
 
-struct termios		*def_term(void);
+struct termios	*def_term(void);
 bool			clean_exit(t_line *line);
 bool			restore_term(struct termios *term_restore);
-struct termios		get_env(struct termios term);
+struct termios	get_env(struct termios term);
 bool			init_error(void);
 bool			error(void);
 
@@ -113,9 +113,9 @@ char			key_pressed(char *s, t_line *line);
 char			*readLineMaster(void);
 t_line			*struct_init(char *prompt, t_hist *h);
 
-int			outc(int c);
-int			letter(t_line *line, char c);
-int			key_del(t_line *line);
+int				outc(int c);
+int				letter(t_line *line, char c);
+int				key_del(t_line *line);
 bool			key_le(t_line *line);
 bool			key_ri(t_line *line);
 bool			key_upp(t_line *line);
@@ -137,8 +137,8 @@ bool			quotes_hist(t_line *line);
 
 void    		restore_curs(t_line line);
 void			move_curs(int x, t_line line);
-int			cursrow(int fd);
-int			curscol(int fd);
+int				cursrow(int fd);
+int				curscol(int fd);
 int     		debug(t_line *line, int a, int b, int c);
 
 
@@ -201,5 +201,10 @@ void			tree_clean(t_tree *tree);
 char			*replace_dollar(char *s, char **tab);
 char			*ft_repdol(char *cmd, char *var, int pos, int lenvar);
 void			ft_signal2(void);
+void			ft_sigwinch(int i);
+int				isfirstfork(int i);
+void			chk_t(t_tree *t);
+int				tree_error(int i);
+int				ft_fork(char *cmd1, char *cmd2, t_env *env);
 
 # endif

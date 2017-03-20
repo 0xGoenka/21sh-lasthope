@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 22:49:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 16:57:52 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 18:49:00 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	super_exit(t_env *env)
 {
 	ft_tabdel(env->t);
-	ft_tabdel(env->hist->tab);
+	ft_tabndel(env->hist->tab, HLEN);
 	free(env->hist);
 	free(env);
 	exit(EXIT_SUCCESS);

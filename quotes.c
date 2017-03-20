@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 18:55:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 11:59:06 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char	*replace_dollar(char *s, char **tab)
 	
 	i = 0;
 	j = 0;
-	//printf("s = %s\n", s);
 	while (s &&s[i])
 	{
 		if (s[i] == '\'')
@@ -102,16 +101,13 @@ char	*replace_dollar(char *s, char **tab)
 				j++;
 			r = ft_strndup(s + i + 1 , j - i - 1);
 			if ((j = ft_tabchr(tab, r, '=')) == -1)
-			{
 				while (s[i] && s[i] != ' ')
 					s = ft_sdelc(s, i);
-			}
 			else
-			{
 				s = (ft_repdol(s, tab[j] + ft_strlen(r) + 1, i , ft_strlen(r) + 1));
-			}
 		}
-		i++;
+		if (s[i])
+			i++;
 	}
 	ft_strdel(&r);
 	return (s);

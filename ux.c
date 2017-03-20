@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 18:26:59 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 20:16:07 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ bool	check_bol(t_line *line, int p)
 	//debug(line, (line->pos + line->plen) % col(),0,0);
 	if ((line->pos + line->plen) % col() == col() - 1)
 	{
+		//ft_putstr("up");
 		tputs(tgetstr("up", 0), 0, outc);
 		tputs(tgoto(tgetstr("ch", 0), 0, col() - 1), 0, outc);
 		if (p)
@@ -96,8 +97,4 @@ void	printN(char *s)
 			s++;
 		}
 	}
-	//t = ft_strdup(s);
-	//ft_strfindreplace(t, '\n', '#');
-	//ft_putstr(t);
-	//ft_strdel(&t);
 }

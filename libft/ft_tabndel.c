@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tabndel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/19 18:32:22 by eleclet          ###   ########.fr       */
+/*   Created: 2017/01/30 18:56:29 by eleclet           #+#    #+#             */
+/*   Updated: 2017/03/17 16:48:31 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_tabndel(char **t, int len)
 {
-	//if (!error())
-	//eturn (0);
-	t_env	*env;
-	char	*str;
-	t_tree *t;
+	int i;
 
-	env = env_init();
-	while (1)
+	i = 0;
+	if (t && *t)
 	{
-		str = readLine("21sh #> ", env->hist);
-		//hist_add(env->hist, str);
-		t = fill_tree(ft_strdup(str), env->t);
-		chk_t(t);
-		if (tree_error(42) == 0)
-			tree_exec(t, NULL, env);
-		tree_error(0);
-		tree_clean(t);
-		ft_strdel(&str);
+		while (i < len)
+		{
+			free(t[i]);
+			i++;
+		}
+		free(t);
 	}
-	return (0);
+	t = NULL;
 }

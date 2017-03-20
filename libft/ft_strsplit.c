@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 10:28:07 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 11:45:29 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 12:06:10 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	**ft_strsplit(char *s, char c)
 {
-	char **r;
-	char *ptr;
-	int i;
-	int wrd;
+	char	**r;
+	char	*ptr;
+	int		i;
+	int		wrd;
 
 	if (!s)
 		return (NULL);

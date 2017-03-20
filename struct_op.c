@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 19:18:51 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 19:31:56 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_line	*struct_init(char *prompt, t_hist *h)
 	line->h = h;
 	i = (line->h->index - 1) % HLEN;
 	if (i < 0)
-		line->h->pos = 4;
+		line->h->pos = HLEN - 1;
 	else
 		line->h->pos = i;
 	line->h->art = 0;

@@ -6,20 +6,19 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 18:36:41 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 16:29:12 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 12:13:25 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 char	*ft_sdelc(char *s, int pos)
 {
-	char *r;
-	int len;
-	int i;
-	int k;
-	
+	char	*r;
+	int		len;
+	int		i;
+	int		k;
+
 	k = 0;
 	i = 0;
 	len = ft_strlen(s) - 1;
@@ -30,8 +29,8 @@ char	*ft_sdelc(char *s, int pos)
 	while (i <= len)
 	{
 		if (pos == i)
-			k = 1;	
-			r[i] = s[i + k];
+			k = 1;
+		r[i] = s[i + k];
 		i++;
 	}
 	ft_strdel(&s);

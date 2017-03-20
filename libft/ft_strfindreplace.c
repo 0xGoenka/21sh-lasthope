@@ -6,13 +6,13 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 16:38:05 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/09 00:01:10 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/17 12:11:04 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-void		ft_strfindreplace(char *s, char c, char d)
+void	ft_strfindreplace(char *s, char c, char d)
 {
 	while (*s)
 	{
