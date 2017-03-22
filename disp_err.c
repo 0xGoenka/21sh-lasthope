@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 15:50:21 by eleclet           #+#    #+#             */
-/*   Updated: 2017/02/07 21:08:04 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:19:13 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	disp_err(int code)
 	else if (code == 2)
 	{
 		ft_putendl("Empty env, program will exit now.");
-		exit (-1);
+		exit(-1);
 	}
 	else
 	{
 		printf("%d\n", code);
-			return (0);
+		return (0);
 	}
 	return (0);
 }

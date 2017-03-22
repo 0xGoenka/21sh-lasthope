@@ -1,0 +1,311 @@
+Norme: ./debug.c
+Error (line 16): function debug has 39 lines
+Error (line 38, col 20): bad character after ,
+Error (line 45, col 12): bad spacing
+Error (line 47, col 12): bad spacing
+Error (line 51, col 49): space before ,
+Error (line 54): line has 86 characters
+Norme: ./disp_err.c
+Norme: ./dollar.c
+Norme: ./copyandpast.c
+Norme: ./error.c
+Error (line 15): bad spacing after error
+Error (line 21): bad spacing before init_error
+Norme: ./binarytree.c
+Error: 7 functions in the file
+Error (line 15): function tree_exec has 29 lines
+Norme: ./exit.c
+Error: file must end with a single empty line
+Error (line 36): bad indentation
+Norme: ./ft_err.c
+Norme: ./cd.c
+Norme: ./exec.c
+Error (line 15): function basic_exec has 28 lines
+Error (line 21): bad indentation
+Error (line 21): C++ comment
+Error (line 22): bad indentation
+Error (line 22): C++ comment
+Error (line 23): bad indentation
+Error (line 24): bad indentation
+Error (line 25): bad indentation
+Error (line 26): bad indentation
+Error (line 27): bad indentation
+Error (line 28): bad indentation
+Error (line 29): bad indentation
+Error (line 30): bad indentation
+Error (line 31): bad indentation
+Error (line 32): bad indentation
+Error (line 32): C++ comment
+Error (line 33): bad indentation
+Error (line 34): bad indentation
+Error (line 35): bad indentation
+Error (line 36): bad indentation
+Error (line 37): bad indentation
+Error (line 38): bad indentation
+Error (line 39): bad indentation
+Error (line 40): bad indentation
+Error (line 40): spaces at the end of line
+Error (line 40, col 12): bad character after ;
+Error (line 41): C++ comment
+Error (line 42): C++ comment
+Error (line 43): Empty line
+Error (line 44): spaces at the end of line
+Error (line 47): declarations in exec_bin are bad aligned
+Error (line 47): function exec_bin has 34 lines
+Error (line 47): declarations must be followed by one empty line in exec_bin
+Error (line 53): spaces at the end of line
+Error (line 58): 2 assignations
+Error (line 69): C++ comment
+Error (line 71): spaces at the end of line
+Error (line 71, col 3): no newline after block
+Norme: ./ft_sigwinch.c
+Error (line 20): C++ comment
+Norme: ./get_term_size.c
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): bad spacing after col
+Error (line 15, col 3): bad spacing
+Error (line 17): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 19): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 20): must begin only by tabulations
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): bad spacing before row
+Error (line 22, col 3): bad spacing
+Error (line 24): bad indentation
+Error (line 24): must begin only by tabulations
+Error (line 26): bad indentation
+Error (line 26): must begin only by tabulations
+Error (line 27): bad indentation
+Error (line 27): must begin only by tabulations
+Norme: ./ft_signal.c
+Error (line 35): bad indentation
+Error (line 35): C++ comment
+Error (line 36): bad indentation
+Error (line 36): C++ comment
+Error (line 41): bad spacing after ft_signal2
+Error (line 53): bad spacing before ft_siguseless
+Norme: ./main.c
+Error (line 15): declarations in main are bad aligned
+Error (line 15): declarations in main must be at the top of the function
+Error (line 17): bad indentation
+Error (line 17): C++ comment
+Error (line 18): bad indentation
+Error (line 18): C++ comment
+Error (line 27): C++ comment
+Error (line 29): C++ comment
+Error (line 30): C++ comment
+Error (line 31): bad indentation
+Error (line 33): bad indentation
+Error (line 33): C++ comment
+Norme: ./outc.c
+Error (line 15): Space before function name
+Error (line 15, col 3): bad spacing
+Norme: ./parser.c
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 29): C++ comment
+Error (line 50): comment not well formatted
+Norme: ./pipe.c
+Error (line 15): multiple empty lines
+Error (line 16): bad spacing before chk_t
+Error (line 45, col 9): space after (
+Error (line 54): spaces at the end of line
+Error (line 54, col 17): bad character after ;
+Error (line 57): declarations in ft_fork must be at the top of the function
+Error (line 66): C++ comment
+Error (line 72): C++ comment
+Norme: ./pute.c
+Error (line 15): missing void in function main
+Error (line 17, col 7): str is instanciated during declaration
+Norme: ./historic.c
+Error: global scope bad aligned
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 15): declarations in hist_init are bad aligned
+Error (line 15): Space before function name
+Error (line 27): spaces at the end of line
+Error (line 50): bad indentation
+Error (line 50): C++ comment
+Error (line 60): bad indentation
+Error (line 60): C++ comment
+Error (line 67): 2 assignations
+Error (line 71): bad indentation
+Error (line 71): If is not on the same line that else
+Error (line 72): bad indentation
+Error (line 73): bad indentation
+Error (line 74): bad indentation
+Error (line 97): 2 assignations
+Norme: ./reader.c
+Error (line 14): preprocessor block must be followed by one empty line
+Error (line 15): declarations in main are bad aligned
+Error (line 15): declarations must be followed by one empty line in main
+Error (line 15): missing void in function main
+Error (line 15): bad spacing before main
+Error (line 20): Empty line
+Error (line 23, col 20): bad character after ,
+Error (line 25): Empty line
+Norme: ./readline.c
+Error (line 15): multiple empty lines
+Error (line 16): declarations in readLine are bad aligned
+Error (line 16): bad spacing before readLine
+Error (line 16, col 0): readLine not unixcase
+Error (line 33, col 3): missing space after break
+Norme: ./env.c
+Error: 7 functions in the file
+Error (line 65): spaces at the end of line
+Error (line 67): spaces at the end of line
+Error (line 67, col 11): bad character after ;
+Error (line 90): spaces at the end of line
+Error (line 90, col 12): bad character after ;
+Error (line 93): Empty line
+Error (line 94, col 0): no empty line before block
+Error (line 96): declarations in env_u are bad aligned
+Error (line 118): declarations in set_env are bad aligned
+Error (line 126): spaces at the end of line
+Error (line 132): 2 assignations
+Error (line 135): 2 assignations
+Error (line 135): spaces at the end of line
+Error (line 135, col 64): bad character after ;
+Error (line 142): spaces at the end of line
+Error (line 142, col 11): bad character after ;
+Norme: ./somefunc.c
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 19): spaces at the end of line
+Error (line 23, col 2): missing space after return
+Norme: ./struct_op.c
+Error (line 15): declarations in struct_init are bad aligned
+Error (line 15): declarations in struct_init must be at the top of the function
+Norme: ./string_man.c
+Norme: ./input_key.c
+Error: global scope bad aligned
+Error: 12 functions in the file
+Error (line 15): function key_pressed has 42 lines
+Error (line 17): bad indentation
+Error (line 17): C++ comment
+Error (line 18): comment not well formatted
+Error (line 18): bad indentation
+Error (line 18): comment not well placed
+Error (line 24): missing newline after if
+Error (line 24): C++ comment
+Error (line 26): missing newline after if
+Error (line 26): C++ comment
+Error (line 28): missing newline after if
+Error (line 28): C++ comment
+Error (line 30): missing newline after if
+Error (line 30): C++ comment
+Error (line 31): bad indentation
+Error (line 31): must begin only by tabulations
+Error (line 32): missing newline after if
+Error (line 32): C++ comment
+Error (line 36): missing newline after if
+Error (line 36): C++ comment
+Error (line 38): bad indentation
+Error (line 38): missing newline after if
+Error (line 38): C++ comment
+Error (line 40): missing newline after if
+Error (line 40): C++ comment
+Error (line 42): missing newline after if
+Error (line 42): C++ comment
+Error (line 44): missing newline after if
+Error (line 44): C++ comment
+Error (line 46): missing newline after if
+Error (line 46): C++ comment
+Error (line 48): missing newline after if
+Error (line 48): C++ comment
+Error (line 52): missing newline after if
+Error (line 52): C++ comment
+Error (line 58): spaces at the end of line
+Error (line 58, col 11): bad character after ;
+Error (line 61): bad spacing after letter
+Error (line 63): bad indentation
+Error (line 63): spaces at the end of line
+Error (line 70): spaces at the end of line
+Error (line 73): bad spacing before key_suppr
+Error (line 73): bad spacing after key_suppr
+Error (line 80): spaces at the end of line
+Error (line 81): spaces at the end of line
+Error (line 81, col 11): bad character after ;
+Error (line 83): bad spacing before key_del
+Error (line 90, col 20): bad character after ,
+Error (line 91, col 28): space before ,
+Error (line 93): spaces at the end of line
+Error (line 108): Empty line
+Error (line 109, col 0): no empty line before block
+Error (line 128, col 50): space before )
+Error (line 130, col 29): space before ,
+Error (line 135): bad spacing after key_do
+Error (line 142): bad indentation
+Error (line 142): spaces at the end of line
+Error (line 144): bad spacing before key_ho
+Error (line 160): spaces at the end of line
+Norme: ./sys.c
+Error: file must end with a single empty line
+Error (line 16): spaces at the end of line
+Error (line 16, col 0): no newline after block
+Error (line 25, col 37): missing space around -
+Error (line 26, col 46): bad character after ,
+Error (line 26, col 48): bad character after ,
+Error (line 29): declarations must be followed by one empty line in move_curs
+Error (line 31, col 5): py is instanciated during declaration
+Error (line 31, col 7): bad spacing
+Error (line 32, col 5): ly is instanciated during declaration
+Error (line 51): Empty line
+Norme: ./test.c
+Error (line 15): missing void in function main
+Error (line 17, col 7): s is instanciated during declaration
+Error (line 19): spaces at the end of line
+Error (line 20): spaces at the end of line
+Norme: ./termcaps.c
+Error: global scope bad aligned
+Error (line 37): bad spacing after restore_term
+Error (line 47): bad spacing before clean_exit
+Error (line 50): spaces at the end of line
+Error (line 50, col 11): bad character after ;
+Error (line 51): spaces at the end of line
+Norme: ./quotes.c
+Error (line 15): comment not well formatted
+Error (line 41): bad indentation
+Error (line 85): declarations in replace_dollar are bad aligned
+Error (line 85): function replace_dollar has 27 lines
+Error (line 85): declarations must be followed by one empty line in replace_dollar
+Error (line 85): bad spacing after replace_dollar
+Error (line 87, col 7): r is instanciated during declaration
+Error (line 90): spaces at the end of line
+Error (line 93, col 10): missing space around &&
+Error (line 96): 2 instructions
+Error (line 96): bad indentation
+Error (line 96): missing newline after while
+Error (line 99, col 8): missing space around +
+Error (line 102, col 28): space before ,
+Error (line 107): line has 85 characters
+Error (line 107, col 51): space before ,
+Error (line 115): declarations in parse_quote are bad aligned
+Error (line 115): bad spacing before parse_quote
+Error (line 138): bad indentation
+Error (line 138): spaces at the end of line
+Error (line 139): comment not well formatted
+Error (line 139): bad indentation
+Error (line 166): comment not well formatted
+Error (line 174): comment not well formatted
+Error (line 177): multiple empty lines
+Error (line 178): multiple empty lines
+Error (line 181): multiple empty lines
+Norme: ./ux.c
+Error: global scope bad aligned
+Error: 7 functions in the file
+Error (line 35): bad indentation
+Error (line 35): C++ comment
+Error (line 38): bad indentation
+Error (line 38): C++ comment
+Error (line 57): C++ comment
+Error (line 81, col 0): printN not unixcase
+Norme: ./sys_utils.c

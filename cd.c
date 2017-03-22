@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:13:10 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 13:57:11 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:17:47 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ static bool	cd_alone(char **env, char **line)
 	}
 	return (0);
 }
-
-/*static bool	cd_l(char **env, char **line, t_opt opt)
-{
-	if (opt.opt[0] != 'L')
-		return (0);
-}*/
 
 static bool	cd_toomanyline(char **env)
 {

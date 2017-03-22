@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 13:46:43 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:17:27 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,15 @@ void		tree_exec(t_tree *tree, t_env *env)
 	if (tree->type == 2)
 	{
 		if (isfirstfork(42) != 0)
-		{
-			ft_fork(tree,  env);
-			return ;
-		}
+			ft_fork(tree, env);
 		else
 		{
 			isfirstfork(1);
 			pid = fork();
 			if (pid == 0)
-			{
 				ft_fork(tree, env);
-				//exit(1);
-			}
 			else
-			{
 				wait(&pid);
-				return ;
-			}
 		}
 	}
 	if (tree->type == 1)
@@ -71,11 +62,9 @@ t_tree		*fill_tree(char *str, char **t)
 		tree->str = parse_quote(replace_dollar(str, t));
 		if (ft_strlen(tree->str) == 0)
 			tree->type = 4;
-		printf("str = %s\n", str);
 	}
 	else
 	{
-	printf("|\n");
 		tree->str = NULL;
 		tree->left = fill_tree(ft_strndup(str, find_next(str)), t);
 		tree->right = fill_tree(ft_strdup(str + find_next(str) + 1), t);
@@ -86,15 +75,14 @@ t_tree		*fill_tree(char *str, char **t)
 
 void		tree_clean(t_tree *tree)
 {
-			if (!tree)
-				return ;
-			ft_strdel(&tree->str);
-		
-			tree_clean(tree->left);
-			tree_clean(tree->right);
-			if (tree)
-			free(tree);
-			tree = NULL;
+	if (!tree)
+		return ;
+	ft_strdel(&tree->str);
+	tree_clean(tree->left);
+	tree_clean(tree->right);
+	if (tree)
+		free(tree);
+	tree = NULL;
 }
 
 int			find_next(char *str)

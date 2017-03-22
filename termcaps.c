@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 16:53:28 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 20:54:38 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:22:01 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool		restore_term(struct termios *term_restore)
 {
 	t_line *l;
 
-	l = stock(NULL, 0);
+	l = stock(NULL, 1);
 	tcsetattr(0, TCSANOW, term_restore);
 	free(term_restore);
 	ft_putchar_fd('\n', l->h->fd);

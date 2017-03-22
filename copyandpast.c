@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 18:36:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 20:54:37 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:18:14 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	copy_read(t_line *line)
 	start = line->pos;
 	while (s[0] != 27 || s[1] != 91 || s[2] != 0)
 	{
-//debug(line, (line->pos+line->plen) % col(), posy(*line), leny(*line));
 		ft_bzero(s, 7);
 		read(0, s, 6);
 		if (s[0] == 27 && s[1] == 91 && s[2] == 67 && line->len > line->pos)
@@ -58,8 +57,6 @@ void	copy_read(t_line *line)
 			move_curs(line->pos, *line);
 			check_bol(line, 0);
 		}
-		//if (s[0] == 27 && s[1] == 99 && s[2] == 0)
-		//	break ;
 	}
 }
 

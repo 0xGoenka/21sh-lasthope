@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:40:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/21 16:57:55 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 21:22:04 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 t_env		*env_init(void)
 {
 	extern char **environ;
-	t_env *env;
-	char *s;
-	int shlvl;
+	t_env		*env;
+	char		*s;
+	int			shlvl;
 
 	env = (t_env *)malloc(sizeof(t_env));
 	env->hist = hist_init();
@@ -35,7 +35,7 @@ t_env		*env_init(void)
 
 bool		display_env(char **line, t_env *env)
 {
-	t_opt opt;
+	t_opt	opt;
 	char	**tmpenv;
 
 	tmpenv = NULL;
@@ -50,6 +50,7 @@ bool		display_env(char **line, t_env *env)
 	ft_strdel(&opt.opt);
 	return (1);
 }
+
 bool		env_alone(char **env, t_opt opt)
 {
 	if (!opt.opt && !opt.arg)
