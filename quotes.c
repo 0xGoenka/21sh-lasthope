@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 11:59:06 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:51:18 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	main_quote(t_line *line)
 	line->pos = 0;
 	line->len = 0;
 	line->plen = ft_strlen("quotes !> ");
-	ft_putstr("\nquotes !> ");
+	ft_putstr_fd("\nquotes !> ", line->h->fd);
 	return (1);
 }
 

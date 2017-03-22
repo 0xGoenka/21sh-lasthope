@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:38:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/13 18:24:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:41 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int		is_exec(char **param)
 	{
 		if (open(param[0], O_RDONLY) == -1)
 		{
-			ft_putstr("shell : no such file or directory : ");
-			ft_putendl(param[0]);
+			ft_putstr_fd("shell : no such file or directory : ", 2);
+			ft_putendl_fd(param[0], 2);
 			return (0);
 		}
 		if (opendir(param[0]))
 		{
-			ft_putstr("shell : permission denied : ");
-			ft_putendl(param[0]);
+			ft_putstr_fd("shell : permission denied : ", 2);
+			ft_putendl_fd(param[0], 2);
 			return (0);
 		}
 		return (1);

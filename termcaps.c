@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 16:53:28 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/31 21:21:13 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:38 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ struct termios	*def_term(void)
 
 bool		restore_term(struct termios *term_restore)
 {
+	t_line *l;
+
+	l = stock(NULL, 0);
 	tcsetattr(0, TCSANOW, term_restore);
 	free(term_restore);
-	ft_putchar('\n');
+	ft_putchar_fd('\n', l->h->fd);
 	return (1);
 }
 bool		clean_exit(t_line *line)

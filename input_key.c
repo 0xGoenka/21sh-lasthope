@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 18:00:27 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:45 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	letter(t_line *line, char c)
 	line->str = s_add(line->str, c, line->pos);
 	line->len++;
 	line->pos++;
-	ft_putchar(c);
+	ft_putchar_fd(c, line->h->fd);
 	check_eol(line, 0);
 	print_end(*line);
 	

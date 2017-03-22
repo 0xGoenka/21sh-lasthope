@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 18:36:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/14 19:19:03 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:37 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	copy_read(t_line *line)
 		if (s[0] == 27 && s[1] == 91 && s[2] == 67 && line->len > line->pos)
 		{
 			tputs(tgetstr("mr", 0), 0, outc);
-			ft_putchar(line->str[line->pos]);
+			ft_putchar_fd(line->str[line->pos], line->h->fd);
 			tputs(tgetstr("me", 0), 0, outc);
 			line->pos++;
 		}
 		if (s[0] == 27 && s[1] == 91 && s[2] == 68 && line->pos != start)
 		{
 			move_curs(line->pos, *line);
-			ft_putchar(line->str[line->pos]);
+			ft_putchar_fd(line->str[line->pos], line->h->fd);
 			line->pos--;
 			move_curs(line->pos, *line);
 			check_bol(line, 0);

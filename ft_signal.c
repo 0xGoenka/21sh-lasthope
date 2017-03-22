@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 11:28:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/19 15:44:05 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:42 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ void	ft_signal2(void)
 }
 void	ft_siguseless(int i)
 {
+	t_line *l;
+
+	l = stock(NULL, 1);
 	i++;
-	ft_putchar('\n');
+	ft_putchar_fd('\n', l->h->fd);
 	return ;
 }
 
@@ -72,8 +75,8 @@ void	ft_sigint(int i)
 	l->pos = 0;
 	l->plen = 8;
 	l->h->pos = l->h->index - 1;
-	ft_putchar('\n');
-	ft_putstr(l->prompt);
+	ft_putchar_fd('\n', l->h->fd);
+	ft_putstr_fd(l->prompt, l->h->fd);
 	tputs(tgetstr("cd", 0), 0, outc);
 	i++;
 	return ;

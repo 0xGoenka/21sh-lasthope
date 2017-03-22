@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 17:53:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 20:54:44 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*readLine(char *prompt, t_hist *hist)
 		disp_err(2);
 	line = struct_init(prompt, hist);
 	stock(line, 0);
-	ft_putstr(line->prompt);
+	ft_putstr_fd(line->prompt, line->h->fd);
 	ft_signal();
 	while (42)
 	{
@@ -31,7 +31,6 @@ char	*readLine(char *prompt, t_hist *hist)
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1 && !main_quote(line))
 			break;
-		debug(line, (line->pos + line->plen) % col(), 0,0);
 	}
 	ft_signal2();
 	move_curs(line->len, *line);
