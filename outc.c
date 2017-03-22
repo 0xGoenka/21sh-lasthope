@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 20:07:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/01/08 22:10:26 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:42:41 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int 	outc(int c)
 {
-	write(1, &c, 1);
+	t_line *l;
+
+	l = stock(NULL, 1);
+	write(l->h->fd, &c, 1);
 	return (1);
 }

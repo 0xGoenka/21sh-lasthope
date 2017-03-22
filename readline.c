@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/19 18:12:22 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:53:08 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*readLine(char *prompt, t_hist *hist)
 		read(0, buf, 6);
 		if (key_pressed(buf, line) == -1 && !main_quote(line))
 			break;
+		debug(line, (line->pos + line->plen) % col(), 0,0);
 	}
 	ft_signal2();
 	move_curs(line->len, *line);

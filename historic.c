@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 14:28:13 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 20:16:01 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 18:13:50 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	hist_read_up(t_line *l)
 		free(l->str);
 		l->str = ft_strdup(l->h->tab[l->h->pos]);
 		move_curs(0, *l);
-		l->pos = l->len = ft_strlen(l->str);
 		tputs(tgetstr("cd", 0), 0, outc);
-		printN(l->str);
+		l->pos = l->len = ft_strlen(l->str);
+		printN(l->str, l->h->fd);
 	}
 	else
 		if (l->h->pos == HLEN - 1)
@@ -87,7 +87,7 @@ void	hist_read_do(t_line *l)
 		move_curs(0, *l);
 		l->pos = ft_strlen(l->str);
 		tputs(tgetstr("cd", 0), 0, outc);
-		printN(l->str);
+		printN(l->str, l->h->fd);
 	}
 	else if (l->h->art)
 	{

@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 15:44:58 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/20 15:47:02 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:06:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ int		isfirstfork(int i)
 	return ((n = i));	
 }
 
-int		ft_fork(char *cmd1, char *cmd2, t_env *env)
+int		ft_fork(t_tree *tree, t_env *env)
 {
 
 	int		pipefd[2];
 	pid_t	pid;
 
+	if (!tree)
+		return (1);
 	pipe(pipefd);
 	//if (isfirstfork(42) == 0)
 	pid = fork();
@@ -67,15 +69,16 @@ int		ft_fork(char *cmd1, char *cmd2, t_env *env)
 	{
 		dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[0]);
-		parser(cmd1, env);
-		exit(EXIT_SUCCESS);
+		//isfirstfork(0);
+		tree_exec(tree->left, env);
 	}
-	if (pid)
+	else
 	{
 		dup2(pipefd[0], STDIN_FILENO);
 		close(pipefd[1]);
-		parser(cmd2, env);
+		tree_exec(tree->right, env);
 		wait(&pid);
 	}
+	exit(1);
 	return (1);
 }

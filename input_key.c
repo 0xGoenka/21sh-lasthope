@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 13:02:32 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 20:16:02 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 18:00:27 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ bool	key_le(t_line *line)
 		return (1);
 	else
 	{
-		tputs(tgetstr("le", 0), 0, outc);
 		line->pos--;
-		check_bol(line, 0);
+		if (!check_bol(line, 0))
+			tputs(tgetstr("le", 0), 0, outc);
 	}
 	return (1);
 }

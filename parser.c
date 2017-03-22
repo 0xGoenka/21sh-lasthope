@@ -6,13 +6,13 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:03 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/20 15:53:09 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/21 16:55:39 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char		*parser(char *str, t_env *env)
+char		*parser(char *str, t_env *env, int fork)
 {
 	char **param;
 	char **path;
@@ -23,8 +23,8 @@ char		*parser(char *str, t_env *env)
 	if (!(param = ft_strsplit(str, ' ')))
 		return (str);
 	if (!buildin(param, env))
-		if (basic_exec(param, env->t))
-			exec_bin(env->t, param, path = split_path(env->t));
+		if (basic_exec(param, env->t, fork))
+			exec_bin(env->t, param, path = split_path(env->t), fork);
 	ft_tabdel(param);
 	//ft_strdel(&str);
 	return (str);

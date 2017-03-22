@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:40:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 14:05:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/21 16:57:55 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ bool		env_alone(char **env, t_opt opt)
 		ft_putendl("Env is empty.");
 	else if (!opt.opt && opt.arg)
 	{
-		if (basic_exec(opt.arg, env))
-			exec_bin(opt.arg, env, split_path(env));
+		if (basic_exec(opt.arg, env, 1))
+			exec_bin(opt.arg, env, split_path(env), 1);
 	}
 	else 
 		return (0);
@@ -73,8 +73,8 @@ bool		env_i(t_opt opt)
 	if (!ft_strchr(opt.opt, 'u'))
 	{
 		if (opt.arg)
-			if (basic_exec(opt.arg, NULL))
-				exec_bin(opt.arg, NULL, NULL);
+			if (basic_exec(opt.arg, NULL, 1))
+				exec_bin(opt.arg, NULL, NULL, 1);
 		return (1);
 	}
 	else
@@ -83,8 +83,8 @@ bool		env_i(t_opt opt)
 			ft_putendl("missing arg for -u");
 		if (ft_tablen(opt.arg) > 1)
 		{
-			if (basic_exec(opt.arg, NULL))
-				exec_bin(opt.arg, NULL, NULL);
+			if (basic_exec(opt.arg, NULL, 1))
+				exec_bin(opt.arg, NULL, NULL, 1);
 		}
 		return (1);	
 	}
@@ -107,8 +107,8 @@ bool		env_u(char **env, t_opt opt)
 		ft_printtab(env);
 	else
 	{
-		if (basic_exec(opt.arg + 1, env))
-			exec_bin(env, opt.arg + 1, split_path(env));
+		if (basic_exec(opt.arg + 1, env, 1))
+			exec_bin(env, opt.arg + 1, split_path(env), 1);
 	}
 	ft_tabdel(tmp);
 	return (1);

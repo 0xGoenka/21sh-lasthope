@@ -6,13 +6,13 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:03:36 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/16 11:24:34 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:53:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	basic_exec(char **param, char **env)
+int	basic_exec(char **param, char **env, int forkit)
 {
 	pid_t pid;
 
@@ -22,11 +22,19 @@ int	basic_exec(char **param, char **env)
 	//{
 		if (access(param[0], X_OK) == 0)
 		{
+			if (isfirstfork(42) && forkit == 0)
+			{
+				execve(param[0], param, env);
+				exit(1);
+			}
 			pid = fork();
 			if (pid > 0)
-				waitpid(pid, NULL, 0);
+				wait(&pid);//waitpid(pid, NULL, 0);
 			else
+			{
 				execve(param[0], param, env);
+				exit(1);
+			}
 			return (0);
 		}
 		return (1);	
@@ -36,13 +44,14 @@ int	basic_exec(char **param, char **env)
 	
 }
 
-int	exec_bin(char **env, char **param, char **path)
+int	exec_bin(char **env, char **param, char **path, int forkit)
 {
 	pid_t pid;
 	char *tmp;
 	char *tmp2;
 	int i;
 	
+	forkit++;
 	i = -1;
 	while (path && path[++i])
 	{
@@ -50,11 +59,19 @@ int	exec_bin(char **env, char **param, char **path)
 		ft_strdel(&tmp2);
 		if (access(tmp, X_OK) == 0)
 		{
+			if (isfirstfork(42) && forkit == 0)
+			{
+				execve(tmp, param, env);
+				exit(1);
+			}
 			pid = fork();
 			if (pid > 0)
-				waitpid(pid, 0, 0);
+				wait(&pid);//waitpid(pid, 0, 0);
 			else
+			{	
 				execve(tmp, param, env);
+				exit(1);
+			}
 			ft_strdel(&tmp);
 			ft_tabdel(path);
 			return (1);

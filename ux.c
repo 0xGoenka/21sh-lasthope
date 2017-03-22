@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 21:54:33 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 20:16:07 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:43:35 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	print_end(t_line line)
 
 	tputs(tgetstr("cd", NULL), 0, outc);
 	s = line.str + line.pos;
-	printN(s);
+	printN(s, line.h->fd);
 	restore_curs(line);
 	//debug(&line, line.pos+line.plen, leny(line) , posy(line));
 }
@@ -78,22 +78,22 @@ int	leny(t_line line)
 	return (i);
 }
 
-void	printN(char *s)
+void	printN(char *s, int fd)
 {
 	if (!ft_strchr(s, '\n'))
-		ft_putstr(s);
+		ft_putstr_fd(s, fd);
 	else
 	{
 		while (*s)
 		{
 			if (*s == '\n')
 			{
-				ft_putstr(RED);
-				ft_putchar('N');
-				ft_putstr(RESET);
+				ft_putstr_fd(RED, fd);
+				ft_putchar_fd('N', fd);
+				ft_putstr_fd(RESET, fd);
 			}
 			else
-				ft_putchar(*s);
+				ft_putchar_fd(*s, fd);
 			s++;
 		}
 	}

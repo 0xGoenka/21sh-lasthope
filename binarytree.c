@@ -6,27 +6,52 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/20 15:45:39 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 13:46:43 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void		tree_exec(t_tree *tree, char *str, t_env *env)
+void		tree_exec(t_tree *tree, t_env *env)
 {
+	pid_t pid;
+
 	if (tree == NULL)
 		return ;
 	if (tree->type == 0)
 	{
-		parser(tree->str, env);
+		parser(tree->str, env, 1);
 		ft_strdel(&tree->str);
 	}
 	if (tree->type == 2)
 	{
-		ft_fork(tree->left->str, tree->right->str, env);
+		if (isfirstfork(42) != 0)
+		{
+			ft_fork(tree,  env);
+			return ;
+		}
+		else
+		{
+			isfirstfork(1);
+			pid = fork();
+			if (pid == 0)
+			{
+				ft_fork(tree, env);
+				//exit(1);
+			}
+			else
+			{
+				wait(&pid);
+				return ;
+			}
+		}
 	}
-	tree_exec(tree->left, str, env);
-	tree_exec(tree->right, str, env);
+	if (tree->type == 1)
+	{
+		tree_exec(tree->left, env);
+		isfirstfork(0);
+		tree_exec(tree->right, env);
+	}
 }
 
 t_tree		*fill_tree(char *str, char **t)
@@ -44,9 +69,13 @@ t_tree		*fill_tree(char *str, char **t)
 	if (tree->type == 0)
 	{
 		tree->str = parse_quote(replace_dollar(str, t));
+		if (ft_strlen(tree->str) == 0)
+			tree->type = 4;
+		printf("str = %s\n", str);
 	}
 	else
 	{
+	printf("|\n");
 		tree->str = NULL;
 		tree->left = fill_tree(ft_strndup(str, find_next(str)), t);
 		tree->right = fill_tree(ft_strdup(str + find_next(str) + 1), t);

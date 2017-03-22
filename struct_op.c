@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:46:15 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 19:31:56 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 16:35:10 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_line	*struct_init(char *prompt, t_hist *h)
 	else
 		line->h->pos = i;
 	line->h->art = 0;
-	line->h->ctrl_c = 0;
+	if ((h->fd = open("/dev/tty", O_RDWR)) == -1)
+		exit(1);
 	return (line);
 }

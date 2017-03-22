@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/20 15:45:46 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/22 17:35:07 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define RED "\x1B[31m"
 # define RESET "\x1B[0m"
 # define HLEN 5
-
+# define FD_ERR 2
 
 
 typedef struct		s_hist
@@ -56,6 +56,7 @@ typedef struct		s_hist
 	char	*quote;
 	int		status;
 	int		ctrl_c;
+	int		fd;
 }			t_hist;
 
 typedef struct		s_env
@@ -76,6 +77,7 @@ typedef struct		s_line
 	int 		pos;
 	int			len;
 	int			*fukn;
+	int			fd;
 	t_hist		*h;
 }				t_line;
 
@@ -162,7 +164,7 @@ t_env			*env_init(void);
 bool			display_env(char **line, t_env *env);
 bool			set_env(char **line, t_env *env);
 bool			buildin(char **line, t_env *env);
-char			*parser(char *str, t_env *env);
+char			*parser(char *str, t_env *env, int fork);
 bool			unset_env(char **line, t_env *env);
 
 int				disp_err(int code);
@@ -170,8 +172,8 @@ int				disp_err(int code);
 char			**split_path(char **env);
 int				is_exec(char **param);
 char			*get_home_dir(char **env);
-int				basic_exec(char **param, char **env);
-int				exec_bin(char **env, char **param, char **path);
+int				basic_exec(char **param, char **env, int fork);
+int				exec_bin(char **env, char **param, char **path, int fork);
 bool			env_alone(char **env, t_opt opt);
 bool			env_i(t_opt opt);
 bool			env_u(char **env, t_opt opt);
@@ -184,7 +186,7 @@ void			super_exit(t_env *env);
 bool			b_echo(char **line);
 bool			need_quote(char *str);
 char			*quotes(t_hist *hist,char *str);
-void			printN(char *s);
+void			printN(char *s, int fd);
 
 int				ctrl_d(t_line *line);
 char			*parse_quote(char *s);
@@ -192,7 +194,7 @@ t_tree			*fill_tree(char *str, char **t);
 int				type_cmd(char *str);
 int				find_next(char *str);
 void			read_tree(t_tree *tree);
-void			tree_exec(t_tree *tree, char *str, t_env *env);
+void			tree_exec(t_tree *tree, t_env *env);
 char			*ft_strchrskipquote(char *s, char c);
 t_line			*stock(t_line *l, int mode);
 bool			main_quote(t_line *line);
@@ -205,6 +207,6 @@ void			ft_sigwinch(int i);
 int				isfirstfork(int i);
 void			chk_t(t_tree *t);
 int				tree_error(int i);
-int				ft_fork(char *cmd1, char *cmd2, t_env *env);
+int				ft_fork(t_tree *tree, t_env *env);
 
 # endif
