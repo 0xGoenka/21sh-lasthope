@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:30:22 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 15:28:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/27 14:37:50 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(void)
 	t_env	*env;
 	char	*str;
 	t_tree *t;
+	t_line *l;
 
 	env = env_init();
 	while (1)
@@ -32,7 +33,9 @@ int		main(void)
 		isfirstfork(0);
 	//	tree_error(0);
 		tree_clean(t);
-		ft_strdel(&str);
+		l = stock(NULL, 1);
+		clean_line(l);
+
 	}
 	return (0);
 }

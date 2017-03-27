@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 17:35:07 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/27 14:37:52 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define ENTER s[0] == 10 && s[1] == 0
 # define RED "\x1B[31m"
 # define RESET "\x1B[0m"
-# define HLEN 5
+# define HLEN 20
 # define FD_ERR 2
 
 
