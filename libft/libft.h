@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 16:49:13 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/28 16:06:46 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_strfindreplace(char *s, char c, char d);
 int					ft_err(char *msg, char *var1, char *var2, int ret);
+int				ft_strisonly(char *str, char c);
 #endif

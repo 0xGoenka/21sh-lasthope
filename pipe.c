@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 15:44:58 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 17:06:26 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/03/29 18:02:25 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,22 @@ void	chk_t(t_tree *t)
 	{
 		if (!t->left || !t->right)
 		{
-			ft_putendl("Parsing error");
+			ft_putendl_fd("Parsing error", 2);
 			tree_error(1);
 			return ;
 		}
 		if (t->left->type && t->right->type)
 		{
-			ft_putendl("Parsing error 2");
+			ft_putendl_fd("Parsing error 2", 2);
 			tree_error(1);
 			return ;
 		}
+	}
+	if (ft_strisonly(t->str, ' '))
+	{
+		ft_putendl_fd("Parsing error 3", 2);
+		tree_error(1);
+		return ;
 	}
 	chk_t(t->right);
 	chk_t(t->left);

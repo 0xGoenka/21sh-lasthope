@@ -6,7 +6,7 @@
 #    By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:08:47 by eleclet           #+#    #+#              #
-#*   Updated: 2017/03/09 00:33:24 by eleclet          ###   ########.fr       *#
+#*   Updated: 2017/03/28 17:01:40 by eleclet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ SRC =	ft_nu_len.c			\
 		ft_strfindreplace.c	\
 		ft_straddstr.c		\
 		ft_isletternum.c	\
+		ft_strisonly.c		\
 
 
 OBJECTS	= $(subst .c,.o,$(SRC))
