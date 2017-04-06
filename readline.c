@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redline.c                                          :+:      :+:    :+:   */
+/*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:38:40 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/27 14:10:08 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/06 13:04:06 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*readLine(char *prompt, t_hist *hist)
 		disp_err(2);
 	line = struct_init(prompt, hist);
 	stock(line, 0);
+	ft_putchar_fd('\n', line->h->fd);
 	ft_putstr_fd(line->prompt, line->h->fd);
 	ft_signal();
 	while (42)

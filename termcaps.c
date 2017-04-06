@@ -6,13 +6,13 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 16:53:28 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 21:22:01 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/05 21:24:26 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-struct termios	*def_term(void)
+struct termios		*def_term(void)
 {
 	char			*term_name;
 	struct termios	term;
@@ -34,7 +34,7 @@ struct termios	*def_term(void)
 	return (old_term);
 }
 
-bool		restore_term(struct termios *term_restore)
+bool				restore_term(struct termios *term_restore)
 {
 	t_line *l;
 
@@ -44,9 +44,9 @@ bool		restore_term(struct termios *term_restore)
 	ft_putchar_fd('\n', l->h->fd);
 	return (1);
 }
-bool		clean_exit(t_line *line)
+
+bool				clean_exit(t_line *line)
 {
 	line->pos = line->pos;
-	return (0);	
-	
+	return (0);
 }

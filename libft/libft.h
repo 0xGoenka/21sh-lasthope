@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/28 16:06:46 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/05 19:25:07 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef				struct s_opt
 }
 
 t_opt;
+int					ft_numbtw(int n1, int n2, int i);
 int					ft_isletternum(char c);
 char				*ft_straddstr(char *s1, char *s2, int pos, int lenvar);
 int					ft_err(char *msg, char *v1, char *v2, int ret);

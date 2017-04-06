@@ -15,6 +15,7 @@ CFLAGS = -Werror -Wextra -Wall -g
 CC = gcc
 SRC =	ft_nu_len.c			\
 		tab_len.c			\
+		ft_numbetween.c		\
 		ft_tabndel.c		\
 		ft_memset.c			\
 		ft_bzero.c			\

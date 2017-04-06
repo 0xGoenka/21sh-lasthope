@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 00:30:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 20:51:18 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/04 20:57:24 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@
 	hist->status = 0;
 	return (str);
 }*/
+int		skip_quote(char *str, int i)
+{
+	char c;
+
+	if (!str)
+		return (i);
+	if (str[i] == '\'' || str[i] == '\"')
+		c = str[i];
+	else 
+		return (i);
+	i++;
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}
 
 bool	main_quote(t_line *line)
 {

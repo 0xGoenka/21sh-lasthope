@@ -42,6 +42,13 @@ SRC =	main.c		\
 	dollar.c		\
 	ft_sigwinch.c	\
 	pipe.c			\
+	parse_redir.c	\
+	parse_redir2.c	\
+	redir.c			\
+	treat_red.c		\
+	open_file.c		\
+
+
 
 OBJ = $(SRC:.c=.o)
 

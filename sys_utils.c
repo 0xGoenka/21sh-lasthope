@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:38:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 20:54:41 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/06 18:19:24 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	**split_path(char **env)
 
 int		is_exec(char **param)
 {
+	DIR *dir;
+
 	if (!ft_strlen(param[0]))
 		return (0);
 	if (param[0][0] == '.' || param[0][0] == '/')
@@ -44,10 +46,11 @@ int		is_exec(char **param)
 			ft_putendl_fd(param[0], 2);
 			return (0);
 		}
-		if (opendir(param[0]))
+		if ((dir = opendir(param[0])))
 		{
 			ft_putstr_fd("shell : permission denied : ", 2);
 			ft_putendl_fd(param[0], 2);
+			closedir(dir);
 			return (0);
 		}
 		return (1);

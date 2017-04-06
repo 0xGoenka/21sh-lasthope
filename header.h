@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/27 14:37:52 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/06 18:04:36 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,5 +208,28 @@ int				isfirstfork(int i);
 void			chk_t(t_tree *t);
 int				tree_error(int i);
 int				ft_fork(t_tree *tree, t_env *env);
-
+char			**redir_to_tab(char *str);
+int				is_redir(char *str);
+int				is_valid_redir(char *str, int i);
+char			**redir_to_tab(char *str);
+char			**check_redir(char **t);
+bool			redir_in_row(char **t);
+int				skip_quote(char *str, int i);
+int				chvrndroit(char *str, int i);
+bool			check_redir2(char *str);
+int				chvrngauche(char *str, int i);
+char			*redir_to_tab_ext(char *str, int *i);
+char			*cmd_to_tab(char *str, int *i);
+int				which_redir(char *str);
+int				which_redir2(char *str);
+char			**tab_rmemptyline(char **t);
+char			***split_tab(char **t1);
+int				main_redir(char *str, t_env *env);
+int				find_exec(char **t);
+char			**red_err(char *msg, char **t);
+int				treat_redir(char **t, char **tl, t_env *env);
+int				parse_fd(int *fd, char **t);
+int				exec_redir(int *fd, char **tl, t_env *env);
+int				open_file(char *filename, int red_type, int *tfd);
+int				exec_redir2(int *fd, char *cmd, t_env *env);
 # endif

@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 22:49:02 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/27 14:38:12 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/03 20:44:57 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ bool	b_echo(char **line)
 	while (line && *line)
 	{
 		line++;
-		ft_putstr_fd(*line, l->h->fd);
+		ft_putstr_fd(*line, 1);
 		if (line + 1)
-		ft_putchar_fd(' ', l->h->fd);
+		ft_putchar_fd(' ', 1);
 	}
-	ft_putchar_fd('\n', l->h->fd);
+	ft_putchar_fd('\n', 1);
 	return (1);
 }
 

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   open_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:43:53 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/02 20:37:37 by eleclet          ###   ########.fr       */
+/*   Created: 2017/04/06 16:54:19 by eleclet           #+#    #+#             */
+/*   Updated: 2017/04/06 20:56:56 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+int			open_file(char *filename, int red_type, int *tfd)
 {
-	size_t	index1;
-	size_t	index2;
+	int fd;
+	int i;
 
-	index1 = 0;
-	if (!*s2)
-		return ((char*)s1);
-	while (s1[index1])
+	i = 0;
+	fd = -1;
+	if (red_type == 1)
+		fd = open(filename, O_TRUNC | O_WRONLY | O_CREAT, 0644);
+	if (red_type == 2)
+		fd = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	if (fd == -1)
+		return (fd);
+	while (++i < 3)
 	{
-		index2 = 0;
-		while (s1[index1 + index2] && s2[index2]
-			&& s2[index2] == s1[index1 + index2])
-			index2++;
-		if (!s2[index2])
-			return (char*)(s1 + index1);
-		index1++;
+		if (tfd[i] == 1)
+			tfd[i] = fd;
 	}
-	return (NULL);
+	return (fd);
 }

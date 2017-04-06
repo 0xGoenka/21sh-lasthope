@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_numbetween.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:43:27 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/05 16:43:45 by eleclet          ###   ########.fr       */
+/*   Created: 2017/04/05 19:19:30 by eleclet           #+#    #+#             */
+/*   Updated: 2017/04/05 19:31:45 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
-bool	error(void)
+int		ft_numbtw(int n1, int n2, int i)
 {
-	if (!init_error())
-		return (0);
-	return (1);
+		if (n1 <= i  && i <= n2)
+			return (1);
+		else
+			return (0);
 }
-bool	init_error(void)
-{
-	if (!def_term())
-	{
-		ft_putendl_fd("Init Termcaps failed!", 2);
-		return (1);
-	}
-	return (1);
-}
-
-

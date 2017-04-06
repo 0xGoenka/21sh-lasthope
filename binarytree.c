@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:04:39 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/29 18:02:24 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/06 20:56:57 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@ void		tree_exec(t_tree *tree, t_env *env)
 		return ;
 	if (tree->type == 0)
 	{
-		parser(tree->str, env, 1);
-		ft_strdel(&tree->str);
+		if (ft_strchr(tree->str, '>') == 0 && ft_strchr(tree->str, '<') == 0)
+		{
+			parser(tree->str, env, 1);
+			ft_strdel(&tree->str);
+		}
+		else
+		{
+			main_redir(tree->str, env);
+			ft_strdel(&tree->str);
+		}
 	}
 	if (tree->type == 2)
 	{

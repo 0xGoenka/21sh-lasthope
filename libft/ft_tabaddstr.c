@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:43:57 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/17 12:05:00 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/02 16:53:23 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	**ft_tabaddstr(char **src, char *str)
 	char	**r;
 	int		len;
 
+	if (!str)
+		return (NULL);
 	len = ft_tablen(src);
 	r = (char **)malloc(sizeof(char *) * (len + 2));
 	r[len + 1] = NULL;

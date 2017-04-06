@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 15:44:58 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/29 18:02:25 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/02 20:37:47 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	chk_t(t_tree *t)
 			return ;
 		}
 	}
-	if (ft_strisonly(t->str, ' '))
+	if (ft_strisonly(t->str, ' ') && t->type == 0)
 	{
 		ft_putendl_fd("Parsing error 3", 2);
 		tree_error(1);

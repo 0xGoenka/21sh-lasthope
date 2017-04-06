@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 16:03:51 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/28 17:01:47 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/03 12:34:02 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strisonly(char *str, char c)
 {
-	while (str)
+	while (str && *str)
 	{
 		if (*str != c)
 			return (0);
