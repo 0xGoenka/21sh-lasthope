@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 13:05:30 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/06 20:56:51 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/06 21:22:17 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int		exec_redir(int *fd, char **t, t_env *env)
 	red = which_redir2(t[file]);
 	while (which_redir2(t[file]) != -1)
 		file++;
-	ft_putendl("ish");
 	fdf = open_file(t[file], red, &fd[0]);
-	if (env)
-		file++; // del thissoon
 	//printf("fd[0] == %d fd[1] == %d fd[2] == %d\n", fd[0], fd[1], fd[2]);
 	exec_redir2(&fd[0], t[exec], env);
 	close(fdf);
