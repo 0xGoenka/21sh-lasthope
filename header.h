@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:31:43 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/06 18:04:36 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/10 22:11:03 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ char			**red_err(char *msg, char **t);
 int				treat_redir(char **t, char **tl, t_env *env);
 int				parse_fd(int *fd, char **t);
 int				exec_redir(int *fd, char **tl, t_env *env);
-int				open_file(char *filename, int red_type, int *tfd);
+int				open_file(char *filename, int red_type);
 int				exec_redir2(int *fd, char *cmd, t_env *env);
+bool			check_redir3(char **t);
 # endif

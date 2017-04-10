@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 10:30:49 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/06 19:41:33 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/10 19:57:40 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main_redir(char *str, t_env *env)
 	if (check_redir2(str))
 	{
 		t = redir_to_tab(str);
-		if ((t = check_redir(t)) == NULL)
+		if ((t = check_redir(t)) == NULL || check_redir3(t) == 0)
 			return (0);
 		//ft_printtab(t);
 		//ft_putendl("=== exec ====");
@@ -51,7 +51,7 @@ int		find_exec(char **t)
 	red = which_redir2(t[i]);
 	while (i != -1 && which_redir2(t[i]) != -1)
 		i--;
-return (i);
+	return (i);
 }
 
 char	***split_tab(char **t1)

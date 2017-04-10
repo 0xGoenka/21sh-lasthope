@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 14:48:48 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/06 20:56:59 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/10 21:31:30 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,31 @@ char		**check_redir(char **t)
 		i++;
 	}
 	return (t);
+}
+
+bool		check_redir3(char **t)
+{
+	int i;
+	int red;
+	int red2;
+
+	i = 0;
+
+	while (t[i])
+	{
+		red = which_redir2(t[i]);
+		if (red != 7 && red != 8 && red != -1)
+		{
+			red2 = which_redir2(t[i + 1]);
+			if (red2 == 7 || red2 == 8)
+			{
+				ft_putendl_fd("parsing error 4", 2);
+				return (0);
+			}
+		}
+		i++;
+	}
+	return (1);
 }
 
 char		**tab_rmemptyline(char **t)
@@ -154,7 +179,7 @@ int			which_redir2(char *str)
 		return (4);
 	if (ft_strcmp(str + 1, ">>") == 0)
 		return (5);
-	if (ft_strcmp(str + 1, ">") == 0)
+	if (ft_strcmp(str + 1, ">") == 0) // 2>
 		return (6);
 	if (ft_strncmp(str, ">&", 2) == 0)
 		return (7);

@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:50:27 by eleclet           #+#    #+#             */
-/*   Updated: 2016/03/03 17:02:30 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/10 21:57:09 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,13 @@ char	*ft_strtrim(char const *s)
 	end = ft_strlen(s) - 1;
 	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
 		start++;
-	if (start == end)
-		return ("");
-	i = 0;
+	if (start >= end)
+		return (NULL);
 	while (s[end] == ' ' || s[end] == '\n' || s[end] == '\t')
 		end--;
-	if (!(s2 = (char *)malloc(sizeof(char) * (end + 10))))
+	if (!(s2 = (char *)malloc(sizeof(char) * (end - start + 2))))
 		return (0);
-	ft_bzero(s2, end + 10);
-	start--;
-	while (start <= end)
-		s2[i++] = s[start++];
-	s2[i] = '\0';
+	s2[end - start + 1] = 0;
+	ft_strncpy(s2, s + start, end - start + 1);
 	return (s2);
 }

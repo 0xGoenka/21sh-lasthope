@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:40:52 by eleclet           #+#    #+#             */
-/*   Updated: 2017/03/22 21:22:04 by eleclet          ###   ########.fr       */
+/*   Updated: 2017/04/10 21:38:17 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ bool		env_u(char **env, t_opt opt)
 		return (ft_err("missing arg for -u", NULL, NULL, 0));
 	i = ft_tabchr(env, opt.arg[0], '=');
 	if (i != -1)
-		env = ft_tabrmstr(tmp, env[i]);
+		tmp = ft_tabrmstr(tmp, env[i]);
 	if (ft_tablen(opt.arg) == 1)
-		ft_printtab(env);
+		ft_printtab(tmp);
 	else
 	{
 		if (basic_exec(opt.arg + 1, env, 1))
